@@ -1,0 +1,363 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+nav {
+    display: flex;
+    padding: 20px 0;
+    justify-content: space-between;
+    align-items: center;
+    /* top: 0;
+    right: 0;
+    z-index: 1000; */
+    color: #000 !important;
+    width: 100%;
+    background: #fff;
+    padding: 0 6%;
+    /* position: fixed; */
+    transition: .3s;
+    border-bottom: 1px solid rgba(231, 158, 3, 1);
+}
+
+.navbar>img {
+    width: 60%;
+}
+
+.bar>a {
+    list-style: none;
+    display: inline-block;
+    padding: 20px 20px;
+    color: #000000 !important;
+    position: relative;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+
+.bar>a:hover {
+    color: #E9A804;
+}
+
+.bar>a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: #E9A804;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.bar>a:hover::after {
+    width: 100%;
+}
+
+.btn>button {
+    /* padding: 8px 25px; */
+    position: relative;
+    background-color: rgba(231, 158, 3, 1);
+    border: 1px solid rgba(231, 158, 3, 1);
+    margin: 20px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100px;
+    height: 2.4rem;
+    font-weight: 500;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+    }
+}
+
+.sign--up {
+    display: flex;
+}
+
+.signup--img {
+    background-image: url(../images/images/login\ img.jpg);
+    background-position: center;
+    background-size: cover;
+    background-color: red;
+    background-repeat: no-repeat;
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+}
+
+.sign--up>.signup--form {
+    width: 60%;
+    height: 88vh;
+
+}
+
+.signup--form {}
+
+.signup--form>h2 {
+    font-size: 46px;
+    color: rgba(231, 158, 3, 1);
+    font-weight: 600;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 11px;
+}
+
+.signup--form>p {
+    font-size: 20px;
+    text-align: center;
+}
+
+p>a {
+    text-decoration: none;
+    color: rgba(231, 158, 3, 1);
+}
+
+form {
+    width: 500px;
+    height: auto;
+
+}
+
+label {
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+}
+
+.signup-form {
+    margin-left: 100px;
+    width: 500px;
+}
+
+input {
+    border: 1px solid rgba(196, 196, 196, 1);
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 17px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+#submit {
+    margin-top: 10PX;
+    font-size: 15px;
+    color: #fff;
+    background-color: rgba(231, 158, 3, 1);
+}
+
+.sign-line {
+    border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.sign-col {
+    width: 110px;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    left: 200px;
+    top: -9px;
+}
+
+.sign-pos {
+    position: relative;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.box-1 {
+    border-radius: 10px;
+    width: 240px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 70px;
+    border: 1px solid rgba(231, 158, 3, 1);
+}
+
+.box-1>img>p {
+    text-align: center;
+    align-items: center;
+}
+
+.text-down {
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        height: 50px;
+    }
+
+    .bar,
+    .btn {
+        display: none;
+    }
+
+    .eve-logo {
+        img {
+            width: 60%;
+        }
+    }
+
+    .signup--form>h2 {
+        font-size: 30px;
+        margin-top: 50px;
+    }
+
+    .signup--img {
+        width: 50%;
+    }
+
+    .signup--form>p {
+        font-size: 10px;
+        text-align: center;
+    }
+
+    p>a {
+        text-decoration: none;
+        color: rgba(231, 158, 3, 1);
+    }
+
+    form {
+        width: 200px;
+        height: auto;
+    }
+
+
+    label {
+        color: rgba(0, 0, 0, 1);
+        font-size: 5px;
+    }
+
+     .signup-form {
+        background-color: rebeccapurple;
+        margin-left: 20px;
+        width: 380px;
+    }
+
+    input {
+        border: 1px solid rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        width: 190%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #submit {
+        margin-top: 10PX;
+        font-size: 13px;
+        color: #fff;
+        background-color: rgba(231, 158, 3, 1);
+    }
+
+    .sign-line {
+        border: 1px solid rgba(0, 0, 0, 1);
+    }
+
+    .sign-col {
+        width: 65px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 10px;
+        position: absolute;
+        left: 100px;
+        top: -9px;
+    }
+
+    .sign-pos {
+        position: relative;
+    }
+
+   /* .box {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+    }
+
+    .box-1 {
+        border-radius: 10px;
+        width: 200px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 40px;
+        border: 1px solid rgba(231, 158, 3, 1);
+    }
+
+    .box-1>img>p {
+        font-size: 10px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .box-1>img {
+        width: 10px;
+    }
+
+    .box-1>p {
+        font-size: 10px;
+    }
+
+    form {
+        width: 300px;
+        height: auto;
+    }
+
+
+    label {
+        color: rgba(0, 0, 0, 1);
+        font-size: 10px;
+    }
+
+    .signup-form {
+        margin-left: 60px;
+        width: 250px;
+    }
+
+    input {
+        border: 1px solid rgba(196, 196, 196, 1);
+        border-radius: 10px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+    } */
+}
+
+/* Repsonsive  */
+
+@media (max-width: 768px) {
+
+
+
+
+
+
+    
+}
