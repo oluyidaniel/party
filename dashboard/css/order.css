@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #002147;
+  color: white;
+  padding: 30px 15px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sidebar >.dash-link a{
+  text-decoration: none;
+  font-weight: 700;
+  color:rgba(231, 158, 3, 1);
+  display: block;
+}
+
+.sidebar >.dash-link a {
+  margin: 40px 0;
+  cursor: pointer;
+  gap: 10px;
+}
+.dash-link i{
+  margin-right: 10px;
+  color: rgba(231, 158, 3, 1);
+}
+.sidebar a.active,
+.sidebar a:hover {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.main {
+  margin-left: 220px;
+  padding: 20px;
+  overflow-y: auto;
+  width: calc(100% - 220px);
+  height: 100vh;
+}
+
+.text-con{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  img{
+    width: 10px;
+  }
+}
+.text-cons{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.search{
+  width: 400px;
+  height: 40px;
+}
+.breadcrumb {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb span {
+      color: #000;
+    }
+
+    .search-container {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .search-container input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 200px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead {
+      background-color: #f0f0f0;
+    }
+
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    th .sort-icon {
+      margin-left: 6px;
+      font-size: 12px;
+    }
+
+    .checkbox-col {
+      width: 40px;
+    }
+
+    .status-active {
+      background-color: #d8f5e2;
+      color: #00b85b;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 13px;
+      display: inline-block;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+button{
+  align-items: center;
+  justify-content: center;
+
+}

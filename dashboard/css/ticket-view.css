@@ -1,0 +1,381 @@
+.single-nav {
+    background-image: linear-gradient(rgba(32, 71, 211, 0.4),rgba(32, 71, 211, 0.4)), url(/App/img/single-pic.png);
+    width: 100%;
+    height: 100vh;
+    background-position: cnetr;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.single--body {
+    padding: 20px 6%;
+}
+
+.single--top {
+    width: 100%;
+    height: auto;
+    background: rgba(102, 0, 255, 0.15);
+    box-shadow: 0px 4px 44px 0px rgba(232, 217, 255, 1);
+    padding: 20px;
+    border-radius: 15px;
+}
+.single--top > p{
+    font-weight: 540;
+    font-size: 42px;
+    padding-bottom: 20px;
+}
+.single-class{
+    padding-bottom: 12px;
+    text-align: center;
+    align-items: center;
+    p{
+        font-size: 20px;
+        color: rgba(132, 132, 132, 1);
+
+    }
+}
+
+.single--down {
+    display: flex;
+    justify-content: space-between;
+}
+.text-tex {
+    margin-top: 40px;
+    width: 80px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgba(231, 158, 3, 1);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    p{
+      color: #fff;
+      font-weight: 500;
+    }
+
+}
+
+
+.single-class {
+    display: flex;
+    gap: 10px;
+}
+
+.date-sin {
+    width: 120px;
+    height: 140px; 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  background: rgba(6, 28, 104, 1);
+    border-radius: 15px;
+    p{
+        font-size: 20px;
+        line-break: 10px;
+        color:  rgba(231, 158, 3, 1);
+        font-weight: 500;
+    }
+}
+
+.sin-text {
+    padding-top: 80px;
+    h1{
+        padding-bottom: 20px;
+        font-size: 42px;
+    }
+    p{
+        font-size: 20px;
+    }
+}
+
+
+.sin-txt {
+    font-size: 30px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.single--ticket {
+    display: flex;
+    justify-content: space-between;
+
+    hr {
+        border-bottom: 1px solid rgba(231, 158, 3, 1)
+    }
+
+}
+
+.single-ticket {
+    padding-top: 15px;
+    text-align: center;
+    width: 240px;
+    gap: 10px;
+    height: 380px;
+    border: 0.5px solid rgba(231, 158, 3, 1);
+
+    h3 {
+        padding: 10px 0px;
+    }
+
+    p {
+        padding-top: 20px;
+    }
+
+    h2 {
+        padding-top: 50px;
+    }
+}
+
+.single-ticket1 {
+    padding-top: 15px;
+    text-align: center;
+    width: 240px;
+    gap: 10px;
+    height: 450px;
+    border: 0.5px solid rgba(231, 158, 3, 1);
+
+    h3 {
+        padding: 10px 0px;
+    }
+
+    p {
+        padding-top: 20px;
+    }
+
+    h2 {
+        padding-top: 80px;
+    }
+}
+
+.single-ticket2 {
+    padding-top: 15px;
+    text-align: center;
+    width: 240px;
+    gap: 10px;
+    height: 490px;
+    border: 0.5px solid rgba(231, 158, 3, 1);
+
+    h3 {
+        padding: 10px 0px;
+    }
+
+    p {
+        padding-top: 20px;
+    }
+
+    h2 {
+        padding-top: 80px;
+    }
+}
+
+.single-ticket3 {
+    padding-top: 15px;
+    text-align: center;
+    width: 240px;
+    gap: 10px;
+    height: 525px;
+    border: 0.5px solid rgba(231, 158, 3, 1);
+
+    h3 {
+        padding: 10px 0px;
+    }
+
+    p {
+        padding-top: 20px;
+    }
+
+    h2 {
+        padding-top: 80px;
+    }
+}
+
+.sing-text {
+    padding-top: 80px !important;
+}
+
+.sin-btn {
+    margin-top: 10px; 
+    margin-left: 10px;
+    width: 215px;
+    border-radius: 15px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    background: rgba(231, 158, 3, 1);
+    cursor: pointer;
+  
+    p{
+        color: white;
+        padding-bottom: 15px;
+        font-weight: 400;
+    }
+}
+.sin-btn:hover{
+  box-shadow: 4px 4px 44px 0px rgba(231, 158, 3, 1);
+}
+
+.sin-hight {
+    img {
+        width: 23%;
+        height: auto;
+    }
+}
+
+.carousel-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  padding: 0px 5%;
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel img {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.carousel-buttons {
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+  padding-right: 15px;
+}
+
+.carousel-btn {
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #b7b7b7;
+}
+
+.carder {
+    display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+  position: relative;
+}
+.carder::-webkit-scrollbar {
+  display: none;
+}
+.carder-h h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  padding: 0px 5%;
+}
+.card-pin {
+    width: 350px;
+    height: auto;
+    background: rgba(8, 38, 143, 0.05);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+.card-pin>img {
+    width: 350px;
+    height: auto;
+    padding: 10px;
+}
+
+.card-pin>a h1 {
+    color: black;
+    font-size: 18px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+.card-pin>h1 {
+    font-size: 18px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+.text--down {
+    display: flex;
+    gap: 5px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+    align-items: center;
+
+    img {
+        width: 25px;
+        height: auto;
+    }
+
+    img,
+    p {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.text--up {
+    display: flex;
+    gap: 9px;
+    text-align: center;
+    align-items: center;
+    padding-left: 25px;
+    padding-bottom: 20px;
+
+    img {
+        width: 20px;
+        height: auto;
+    }
+
+    img,
+    p {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.group--down {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.class-div {
+    width: 73px;
+    height: 79px;
+    text-align: center;
+    border-radius: 15px;
+    color: rgba(231, 158, 3, 1);
+    padding-right: 10px;
+
+    p {
+        background: rgba(6, 28, 104, 1);
+        padding: 15px;
+        border-radius: 15px;
+    }
+}

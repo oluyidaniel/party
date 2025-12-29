@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #002147;
+  color: white;
+  padding: 30px 15px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.sidebar >.dash-link a{
+  text-decoration: none;
+  font-weight: 700;
+  color:rgba(231, 158, 3, 1);
+  display: block;
+}
+
+.sidebar >.dash-link a {
+  margin: 40px 0;
+  cursor: pointer;
+  gap: 10px;
+}
+.dash-link i{
+  margin-right: 10px;
+  color: rgba(231, 158, 3, 1);
+}
+.sidebar a.active,
+.sidebar a:hover {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.main {
+  margin-left: 220px;
+  padding: 20px;
+  overflow-y: auto;
+  width: calc(100% - 220px);
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .actions input {
+width: 100%;
+  padding: 8px;
+  width: 400px;
+  margin-right: 10px;
+}
+
+.btn-create{
+  margin-top: 20px;
+  background-color: #ffa500;
+  border: none;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.btn-create:hover{
+  box-shadow: 0px 4px 44px 0px rgba(231, 158, 3, 1);
+
+}
+.actions{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.cir-image{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+form{
+  margin-top: 50px;
+  background-color:rgba(196, 196, 196, 0.15);
+}
+input, textarea{
+  width: 100%;
+}
+input{
+  height: 40px;
+  margin-top: 10px;
+  background-color: ;
+}
+textarea{
+  height: 60vh;
+  margin-top: 10px;
+  background-color: ;
+}
+
+.btn{
+  background-color: rgba(231, 158, 3, 1);
+  color: white;
+  font-weight: 600;
+  border: none;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/event-load.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="dash-link">
+                <a href="../index.html" ><i class="fa-solid fa-house-chimney"></i>Home</a>
+                <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload Events</a>
+                <a href="../html/order.html"><i class="fa-solid fa-address-book"></i>Orders</a>
+                <a href="../html/event.html"><i class="fa-solid fa-calendar-week"></i>Events</a>
+                <a href="../html/newsletter.html"><i class="fa-solid fa-envelope-open-text"></i>Newsletter</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <header class="header">
+                <div>
+                    <h4>Home</h4>
+                    <p>Welcome Chidimma</p>
+                </div>
+                <div class="actions">
+                    <div><input type="text" placeholder="Search" /> </div>
+                    <div class="cir-image"><img src="" alt="" srcset=""></div>
+                </div>
+            </header>
+            <section class="inputs">
+                <div>
+                    <input type="text" placeholder="Enter event title" class="in-94">
+                    <input type="button" value="Title" class="in-10" id="blue">
+                </div>
+                <div class="group-input">
+                    <input type="text" placeholder="Enter event location">
+                    <input type="text" placeholder="Enter event price">
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter event time" class="in-50">
+                </div>
+                <div class="container">
+                    <h2>Hero Image</h2>
+                    <label for="imageUpload" class="upload-box" id="uploadLabel">
+                        <img id="previewImage" src="../image/image.svg" alt="placeholder" />
+                        <input type="file" id="imageUpload" accept="image/*" hidden />
+                    </label>
+                </div>
+                <div class="text-ra">
+                    <h2>Description</h2>
+                    <form action="">
+                        <textarea name="text" id="" cols="100" rows="10">
+                            Enter event description here...
+                        </textarea>
+                    </form>
+                </div>
+                <div class="form-i">
+                    <h2>Tickets</h2>
+                    <div class="ticket-input">
+                        <form action="" class="form-set">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="">Ticket category</label>
+                                    <input type="text" placeholder="Enter apartment type">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Ticket price</label>
+                                    <input type="text" placeholder="Enter ticket price">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Benefits</label>
+                                <input type="text" placeholder="Enter your text here">
+                            </div>
+                            <div class="move-right">
+                                  <img src="../image/plus.svg" alt="" class="form-img">
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+
+                <div class="image-section">
+                    <h2>Thumbnails</h2>
+                    <div class="image-div">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="spe">Preview</button>
+                    <button>Publish</button>
+                </div>
+            </section>
+        </main>
+
+        <script src="../javascript/script.js"></script>
+</body>
+
+</html>

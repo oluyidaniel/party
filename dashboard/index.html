@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Dashboard</title>
+    <link rel="stylesheet" href="../dashboard/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="dashboard">   
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="dash-link">
+                <a href="../dashboard/index.html" class="active"><i class="fa-solid fa-house-chimney"></i>Home</a>
+                <a href="../dashboard/html/event-upload.html"> <i class="fa-solid fa-file-arrow-up"></i>Upload Events</a>
+                <a href="../dashboard/html/order.html"><i class="fa-solid fa-address-book"></i>Orders</a>
+                <a href="../dashboard/html/event.html"><i class="fa-solid fa-calendar-week"></i>Events</a>
+                <a href="../dashboard/html/newsletter.html"><i class="fa-solid fa-envelope-open-text"></i>Newsletter</a>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="main">
+            <div class="topbar">
+                <div class="left">
+                    <h3>Home</h3>
+                    <p>Welcome Chidimma</p>
+                </div>
+                <div class="right">
+                    <input type="text" placeholder="Search..." />
+                    <button class="create-btn">Create New Events</button>
+                </div>
+            </div>
+
+            <section class="cards">
+                <div class="card-a yellow">
+                    <div>
+                        Number of Events <span>100</span>
+                    </div>
+                    <div>
+                        <img src="../image/admin-mail.svg" alt="">
+                    </div>
+                </div>
+                <div class="card-a green">
+                    <div>Upcoming Events <span>70</span>
+                    </div>
+                    <div>
+                        <img src="../image/admin-mark.svg" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="card-a red">
+                    <div>Past Events <span>30</span></div>
+                    <div><img src="../image/admin-redmark.svg" alt="" srcset=""></div>
+            </section>
+
+            <section class="carder-h">
+                <div class="carder-hi">
+                    <h2>Events</h2>
+                    <div class="carder-hei">
+                        <p>See More</p>
+                        <img src="../image/mingcute_arrow-right-fill (1).svg" alt="">
+                    </div>
+                </div>
+                <div class="carousel" id="carousel">
+                    <div class="carder carousel" id="carousel">
+                        <div class="top-card">
+                            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="200"
+                                onclick="location.href='/App/html/single-event.html'">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg" alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png" alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+
+                            <div class="card colore" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg" alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png" alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+
+                            <div class="card blue" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg" alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png" alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+                            <div class="card red" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg " alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png  " alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+                            <div class="card orange" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg  " alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png  " alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+                            <div class="card colore" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg" alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png " alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+                            <div class="card blue" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg  " alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./image/location1.png " alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./image/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+                            <div class="card red" data-aos="zoom-in-up" data-aos-delay="200">
+                                <div class="top--love">
+                                    <img src="./image/img card 1.svg" alt="" class="pix-1 left-mov">
+                                    <i class="fa-solid fa-heart love"></i>
+                                </div>
+
+                                <h6 class="text">Quick Production</h6>
+
+                                <h4>Lagos-island Party Rave’24</h4>
+                                <div class="pad">
+                                    <img src="./image/date 1.svg  " alt="">
+                                    <span>Sat, April 13 at 10:00pm - Till Dawn</span>
+
+                                </div>
+                                <br>
+                                <div class="pad">
+                                    <img src="./images/icons/location1.png  " alt="">
+                                    <span>Landmark Beach, Victoria island.</span>
+                                </div>
+                                <div class="pad1">
+                                    <img src="./images/icons/group img.png" alt="">
+                                    +1k people going
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-buttons">
+                    <img src="../image/iconamoon_arrow-left-2-bold.svg" alt="left" srcset="" class="carousel-btn left"
+                        id="prevBtn">
+                    <img src="../image/iconamoon_arrow-right-2-bold.svg" alt="" srcset="" class="carousel-btn right"
+                        id="nextBtn">
+                </div>
+
+            </section>
+
+            <section class="analytics">
+                <h3>Analytics</h3>
+                <div class="analytics-content">
+                    <div class="chart">
+                        <div class="chart-in">
+                            <p>Tickets Sold</p>
+                            <img src="../image/dot.svg" alt="" srcset="">
+                        </div>
+                        <img src="../image/Chart Area.svg" alt="" srcset="">
+                    </div>
+
+                    <div class="table">
+                        <p>Event Registration User List </p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID NO</th>
+                                    <th>Name</th>
+                                    <th>Event</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#343Gh</td>
+                                    <td>Andre Immanuel</td>
+                                    <td>ITSkills Job Fair</td>
+                                    <td><span class="status pink">Canceled</span></td>
+                                    <td><img src="../image/small dot.svg" alt="" srcset=""></td>
+                                </tr>
+
+                                <tr>
+                                    <td>#343Gh</td>
+                                    <td>Andre Immanuel</td>
+                                    <td>ITSkills Job Fair</td>
+                                    <td><span class="status pink">Paid</span></td>
+                                    <td><img src="../image/small dot.svg" alt="" srcset=""></td>
+                                </tr>
+
+                                <tr>
+                                    <td>#343Gh</td>
+                                    <td>Andre Immanuel</td>
+                                    <td>ITSkills Job Fair</td>
+                                    <td><span class="status pink">free</span></td>
+                                    <td><img src="../image/small dot.svg" alt="" srcset=""></td>
+                                </tr>
+                                <tr>
+                                    <td>#343Gh</td>
+                                    <td>Andre Immanuel</td>
+                                    <td>ITSkills Job Fair</td>
+                                    <td><span class="status pink">Canceled</span></td>
+                                    <td><img src="../image/small dot.svg" alt="" srcset=""></td>
+                                </tr>
+                                <tr>
+                                    <td>#343Gh</td>
+                                    <td>Andre Immanuel</td>
+                                    <td>ITSkills Job Fair</td>
+                                    <td><span class="status pink">Paid</span></td>
+                                    <td><img src="../image/small dot.svg" alt="" srcset=""></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../javascript/script.js"></script>
+</body>
+
+</html>
