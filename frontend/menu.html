@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Bar</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .menu-btn {
+      cursor: pointer;
+      display: inline-block;
+      padding: 10px;
+      font-size: 24px;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-links.active {
+      display: block;
+    }
+
+    /* Optional: Better layout for wider screens */
+    @media(min-width: 768px) {
+      .nav-links {
+        display: flex !important;
+        gap: 1rem;
+      }
+      .menu-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-btn" id="menuBtn">&#9776; Menu</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Movies</a></li>
+    <li><a href="#">TV Shows</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <script src="menu.js"></script>
+
+</body>
+</html>

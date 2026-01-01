@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Ticket Cart</title>
+  <link rel="stylesheet" href="../frontend/style/cart.css" />
+</head>
+<body>
+
+<!-- EVENTS SECTION -->
+<section class="events">
+  <div class="event-card" 
+       data-title="Tech Innovators Conference"
+       data-regular="5000"
+       data-vip="15000"
+       data-vvip="30000">
+    <h3>Tech Innovators Conference</h3>
+    <p>Lagos • Dec 2025</p>
+    <button class="buy-btn">Buy Ticket</button>
+  </div>
+
+  <div class="event-card" 
+       data-title="Music & Arts Festival"
+       data-regular="8000"
+       data-vip="20000"
+       data-vvip="40000">
+    <h3>Music & Arts Festival</h3>
+    <p>Abuja • Jan 2026</p>
+    <button class="buy-btn">Buy Ticket</button>
+  </div>
+</section>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+  <div class="modal">
+    <span class="close-btn">&times;</span>
+
+    <h2 id="eventTitle"></h2>
+
+    <label>Ticket Type</label>
+    <select id="ticketType">
+      <option value="regular">Regular</option>
+      <option value="vip">VIP</option>
+      <option value="vvip">VVIP</option>
+    </select>
+
+    <div class="price">
+      ₦<span id="ticketPrice">0</span>
+    </div>
+
+    <button class="pay-btn">Proceed to Payment</button>
+  </div>
+</div>
+
+<script src="../frontend/script/cart.js"></script>
+</body>
+</html>

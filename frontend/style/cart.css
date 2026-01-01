@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+.events {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+}
+
+.event-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+}
+
+.buy-btn {
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  background: #22c55e;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #020617;
+  padding: 30px;
+  width: 350px;
+  border-radius: 14px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.price {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.pay-btn {
+  width: 100%;
+  padding: 12px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
