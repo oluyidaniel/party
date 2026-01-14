@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
+import eventRoutes from "./routes/event.routes.js";
 import mongoose from "mongoose";
 
 dotenv.config();
@@ -31,7 +32,7 @@ app.get("/test-db", async (req, res) => {
 // Auth routes
 // ----------------------------
 app.use("/api/auth", authRoutes);
-
+app.use("/api/events", eventRoutes);
 // ----------------------------
 // Start server
 // ----------------------------
