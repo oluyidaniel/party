@@ -1,4 +1,4 @@
-fetch("./script/event.json")
+fetch("./event.json")
   .then(res => res.json())
   .then(data => {
     if (document.getElementById("events-container")) {
