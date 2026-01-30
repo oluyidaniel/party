@@ -7,7 +7,7 @@
         "location": "Lagos, Nigeria",
         "date": "2026-03-18",
         "time": "09:00 AM",
-        "image": "../images/images/img card 1.svg",
+        "image": "./assest/day.jpg",
         "peopleGoing": 420
       },
       "details": {
