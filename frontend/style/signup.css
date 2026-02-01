@@ -84,7 +84,7 @@ nav{
 }
 
 .sign--up > .signup--img{
-    background-image: url(../images/images/sign-up\ png.png);
+    background-image: url(../assest/high-1.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -294,7 +294,7 @@ input{
 
 
 }
-@media (max-width: 425px) {
+@media (max-width: 500px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
