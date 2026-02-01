@@ -84,7 +84,7 @@ nav {
 }
 
 .signup--img {
-    background-image: url(../images/images/login\ img.jpg);
+    background-image: url(../assest/high-1.png);
     background-position: center;
     background-size: cover;
     background-color: red;
@@ -222,7 +222,7 @@ input {
     }
 
     .signup--img {
-        width: 50%;
+        display: none;
     }
 
     .signup--form>p {
@@ -247,9 +247,9 @@ input {
     }
 
      .signup-form {
-        background-color: rebeccapurple;
+        
         margin-left: 20px;
-        width: 380px;
+        width: 100%;
     }
 
     input {
