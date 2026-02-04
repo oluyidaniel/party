@@ -18,7 +18,8 @@ fetch("./script/events.json")
     const priceContainer = document.getElementById("price-container");
     event.details.prices.forEach(price => {
       const btn = document.createElement("div");
-      btn.className = "price-tag";
+      btn.className = "top-card";
+      
       btn.innerHTML = `<h3>${price.type}</h3><p>${price.currency} ${price.amount.toLocaleString()}</p>`;
       btn.onclick = () => openModal(price);
       priceContainer.appendChild(btn);

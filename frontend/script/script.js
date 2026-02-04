@@ -18,3 +18,20 @@ menuToggle.addEventListener('click', () => {
         closeIcon.style.display = 'none';
     }
 });
+
+
+function handleCardClick(destinationUrl) {
+    // Look for the token saved during login
+    const token = localStorage.getItem('userToken'); 
+
+    if (token) {
+        // Optional: You could add an API call here to verify if the token is still valid
+        window.location.href = destinationUrl;
+    } else {
+        // No token found? Save the page they WANTED to go to so you can redirect them back later
+        localStorage.setItem('redirectAfterLogin', destinationUrl);
+        
+        alert("Please login or register to view event details!");
+        window.location.href = "./html/login.html"; 
+    }
+}
