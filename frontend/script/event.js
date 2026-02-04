@@ -4,7 +4,7 @@ fetch("./script/event.json")
     const container = document.getElementById("events-container");
     data.events.forEach(event => {
       const card = document.createElement("div");
-      card.className = "top-card";
+      card.className = "event-card";
       card.innerHTML = `
        <img 
     src="${event.card.image}" 
