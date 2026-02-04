@@ -2,7 +2,7 @@
   display: grid;
   /* This creates columns at least 300px wide, filling the available space */
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 24px;
+  gap: 30px;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto; /* Centers the whole grid on the page */
@@ -20,7 +20,7 @@
 
 .event-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 4px 4px rgba(241, 219, 75, 1);
 }
 .event-card img {
   width: 100% !important; /* Force it to fill the card width */

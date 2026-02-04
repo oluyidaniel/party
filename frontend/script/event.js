@@ -20,7 +20,7 @@ fetch("./script/event.json")
           <small>👥 ${event.card.peopleGoing} attending</small>
         </div>
       `;
-      card.onclick = () => window.location.href = `event.html?id=${event.id}`;
+      card.onclick = () => window.location.href = `single_event.html?id=${event.id}`;
       container.appendChild(card);
     });
   })
