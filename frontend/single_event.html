@@ -1,32 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Event Details</title>
-  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
 
-  <div class="event-details">
-    <img id="banner" class="banner-image" alt="Event Banner" />
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <button onclick="openCartModal()">Cart (<span id="cart-count">0</span>)</button>
+</nav>
 
-    <h1 id="title"></h1>
-    <p id="description"></p>
-    <p id="venue"></p>
+<div id="banner" class="hero"></div>
 
-    <h2>Tickets</h2>
-    <div id="price-container" class="price-grid"></div>
+<section>
+  <h1 id="title"></h1>
+  <p id="venue"></p>
+  <p id="location"></p>
+  <p id="time"></p>
+  <p id="peopleGoing"></p>
+  <pre id="date"></pre>
+</section>
+
+<section>
+  <h2>About</h2>
+  <p id="description"></p>
+</section>
+
+<section>
+  <h2>Tickets</h2>
+  <div id="price-container"></div>
+</section>
+
+<section>
+  <h2>Gallery</h2>
+  <div class="carousel">
+    <img src="./assets/day.jpg">
   </div>
+  <button onclick="scrollCarousel(-300)">‹</button>
+  <button onclick="scrollCarousel(300)">›</button>
+</section>
 
-  <!-- Payment Modal -->
-  <div id="payment-modal" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="selected-ticket"></h2>
-      <p id="selected-price"></p>
-      <button class="pay-btn">Proceed to Pay</button>
-    </div>
+<section>
+  <h2>Related Events</h2>
+  <div id="related-events"></div>
+</section>
+
+<!-- Payment Modal -->
+<div id="payment-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3 id="selected-ticket"></h3>
+    <p id="selected-price"></p>
+    <button onclick="changeQuantity(-1)">-</button>
+    <input id="quantity" value="1">
+    <button onclick="changeQuantity(1)">+</button>
+    <button onclick="addToCart()">Add to Cart</button>
+    <button onclick="closeModal()">Close</button>
   </div>
+</div>
 
-  <script src="./script/event-details.js"></script>
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal hidden">
+  <div>
+    <h3>Your Cart</h3>
+    <div id="cart-summary"></div>
+    <p id="cart-total"></p>
+    <button onclick="closeCartModal()">Close</button>
+  </div>
+</div>
+
+<script src="./script/event-details.js"></script>
 </body>
 </html>
