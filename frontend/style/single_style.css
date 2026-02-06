@@ -1,0 +1,235 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem;
+  color: #fff;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.navbar button:hover {
+  background-color: #0056b3;
+}
+
+/* Hero Banner */
+.hero {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 2rem;
+}
+
+/* Sections */
+section {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+pre {
+  white-space: pre-wrap;
+  margin-bottom: 0.5rem;
+}
+
+/* Tickets */
+#price-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.single-ticket {
+  flex: 1 1 200px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.single-ticket button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.single-ticket button:hover {
+  background-color: #218838;
+}
+
+/* Gallery Carousel */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.carousel img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+section button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0 0.5rem;
+}
+
+section button:hover {
+  background-color: #0056b3;
+}
+
+/* Related Events */
+#related-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card-pin {
+  flex: 1 1 200px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card-pin img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-pin a {
+  display: block;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.card-pin h4 {
+  margin: 0.5rem 0;
+}
+
+/* Modals */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0.5rem;
+}
+
+.modal-content button:hover {
+  background-color: #0056b3;
+}
+
+.modal-content input {
+  width: 50px;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+#cart-summary {
+  margin: 1rem 0;
+}
+
+#cart-total {
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .carousel {
+    flex-direction: column;
+  }
+}
