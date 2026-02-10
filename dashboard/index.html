@@ -39,21 +39,21 @@
             <section class="cards">
                 <div class="card-a yellow">
                     <div>
-                        Number of Events <span>100</span>
+                        Number of Events <span id="totalEvents">0</span>
                     </div>
                     <div>
                         <img src="../image/admin-mail.svg" alt="">
                     </div>
                 </div>
                 <div class="card-a green">
-                    <div>Upcoming Events <span>70</span>
+                    <div>Upcoming Events <span id="upcomingEvents">0</span>
                     </div>
                     <div>
                         <img src="../image/admin-mark.svg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="card-a red">
-                    <div>Past Events <span>30</span></div>
+                    <div>Past Events <span id="pastEvents">0</span>
                     <div><img src="../image/admin-redmark.svg" alt="" srcset=""></div>
             </section>
 
@@ -67,7 +67,7 @@
                 </div>
                 <div class="carousel" id="carousel">
                     <div class="carder carousel" id="carousel">
-                        <div class="top-card">
+                        <div class="top-card" id="eventsContainer">
                             <div class="card orange" data-aos="zoom-in-up" data-aos-delay="200"
                                 onclick="location.href='/App/html/single-event.html'">
                                 <div class="top--love">
@@ -348,7 +348,7 @@
             </section>
         </main>
     </div>
-
+    <script src="./javascript/dashboard.js"></script>
     <script src="../javascript/script.js"></script>
 </body>
 
