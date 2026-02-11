@@ -44,7 +44,7 @@ body.fade-in-load {
   left: 0;
   top: 0;
   width: 100%; /* full width */
-  height: 100%; /* full height */
+  height: 100vh !important; /* full height */
   overflow: auto; /* scroll if needed */
   background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
   transition: opacity 0.3s ease;
@@ -79,13 +79,13 @@ body.fade-in-load {
   margin: 4px 0;
 }
 
-button {
+.cart_button{
   cursor: pointer;
   padding: 8px 15px;
   margin: 5px 0;
   border: none;
   border-radius: 5px;
-  background-color: #0077ff;
+  background-color: #0077ff ;
   color: white;
   font-size: 14px;
 }
@@ -640,7 +640,7 @@ nav {
   transform: rotate(180deg);
 }
 
-    button {
+    /* button {
         margin-top: 60px;
         margin-left: 43%;
         align-items: center;
@@ -654,7 +654,7 @@ nav {
         border-radius: 10px;
         box-shadow: 4px 4px #E9A804;
 
-    }
+    } */
 
     button:hover {
         background-color: #E9A804;
