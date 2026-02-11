@@ -1,74 +1,73 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-}
-
-.events {
-  display: flex;
-  gap: 20px;
-  padding: 40px;
-}
-
-.event-card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 12px;
-  width: 250px;
-}
-
-.buy-btn {
-  margin-top: 15px;
-  padding: 10px;
-  width: 100%;
-  background: #22c55e;
-  border: none;
-  color: #000;
-  cursor: pointer;
-  border-radius: 8px;
-}
-
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  justify-content: center;
-  align-items: center;
-}
-
+/* ======================================
+   MODAL BASE STYLES
+====================================== */
 .modal {
-  background: #020617;
-  padding: 30px;
-  width: 350px;
-  border-radius: 14px;
+  display: none; /* hidden by default */
+  position: fixed; /* stay in place */
+  z-index: 1000; /* above everything else */
+  left: 0;
+  top: 0;
+  width: 100%; /* full width */
+  height: 100%; /* full height */
+  overflow: auto; /* scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  transition: opacity 0.3s ease;
+}
+
+.modal .modal-content {
+  background-color: #fff;
+  margin: 10% auto; /* center vertically and horizontally */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   position: relative;
 }
 
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 22px;
+/* Show modal when .hidden is removed */
+.modal.hidden {
+  display: none;
+}
+
+.modal:not(.hidden) {
+  display: block;
+}
+
+/* Cart items inside modal */
+.cart-item {
+  margin-bottom: 15px;
+}
+
+.cart-item p {
+  margin: 4px 0;
+}
+
+button {
   cursor: pointer;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  margin: 15px 0;
-}
-
-.price {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.pay-btn {
-  width: 100%;
-  padding: 12px;
-  background: #38bdf8;
+  padding: 8px 15px;
+  margin: 5px 0;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 5px;
+  background-color: #0077ff;
+  color: white;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #005fcc;
+}
+
+/* Cart total */
+#cart-total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .modal .modal-content {
+    margin: 20% auto;
+    width: 95%;
+  }
 }

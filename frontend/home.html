@@ -16,6 +16,7 @@
         rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="../frontend/style/event-style.css">
+    <link rel="stylesheet" href="../frontend/style/cart.css">
 </head>
 
 <body class="fade-in-load">
@@ -33,6 +34,17 @@
         <div class="btn" id="nav-buttons">
     <i class="fa-solid fa-cart-shopping"></i>
     <span id="cart-count">0</span>
+</div>
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Your Cart</h3>
+    <div id="cart-summary"></div>
+    <p id="cart-total"></p>
+
+    <button onclick="payWithPaystack()">Proceed to Payment</button>
+    <button onclick="closeCartModal()">Close</button>
+  </div>
 </div>
 
         <div class="menu-bar" id="menu-toggle">
