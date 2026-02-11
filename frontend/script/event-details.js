@@ -1,54 +1,65 @@
-// ===============================
+// ======================================
 // GLOBAL STATE
-// ===============================
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// ======================================
+let cart = [];
+try {
+  const saved = JSON.parse(localStorage.getItem("cart"));
+  if (Array.isArray(saved)) cart = saved;
+} catch (err) {
+  cart = [];
+}
+
 let currentEvent = null;
 let selectedTicket = null;
 
-// ===============================
-// DOM READY
-// ===============================
+// ======================================
+// INITIALIZE PAGE
+// ======================================
 document.addEventListener("DOMContentLoaded", () => {
-  loadSingleEvent();
+  loadEvent();
   updateCartCount();
   renderCart();
 });
 
-// ===============================
+// ======================================
 // LOAD SINGLE EVENT
-// ===============================
-async function loadSingleEvent() {
+// ======================================
+async function loadEvent() {
   const params = new URLSearchParams(window.location.search);
   const eventId = params.get("id");
 
   if (!eventId) {
-    showError("No event selected");
-    return;
+    return showError("No event selected.");
   }
 
   try {
-    const response = await fetch("./script/event.json");
-    if (!response.ok) throw new Error("Failed to load event.json");
+    // Adjust the path to where your event.json actually lives
+    const res = await fetch("./script/event.json");
+    const data = await res.json();
 
-    const data = await response.json();
-    if (!data.events || !Array.isArray(data.events)) throw new Error("Invalid event data structure");
+    if (!data.events || !Array.isArray(data.events)) {
+      throw new Error("Invalid event data structure");
+    }
 
     const event = data.events.find(e => e.id === eventId);
-    if (!event) throw new Error("Event not found");
+
+    if (!event) {
+      throw new Error("Event not found");
+    }
 
     currentEvent = event;
     renderEvent(event);
     renderRelatedEvents(data.events, eventId);
 
-  } catch (error) {
-    console.error(error);
-    showError(error.message);
+  } catch (err) {
+    console.error(err);
+    showError("Failed to load event. Make sure event.json exists and path is correct.");
   }
 }
 
-// ===============================
-// RENDER EVENT
-// ===============================
+// ======================================
+// RENDER EVENT DETAILS
+// ======================================
 function renderEvent(event) {
   setBackground("banner", event.details.bannerImage);
   setText("title", event.card.title);
@@ -59,84 +70,105 @@ function renderEvent(event) {
   setText("peopleGoing", `${event.card.peopleGoing} attending`);
 
   const date = new Date(event.card.date);
-  setText("date", `${date.getDate()} ${date.toLocaleString("default", { month: "short" })}`);
+  setText(
+    "date",
+    `${date.getDate()} ${date.toLocaleString("default", { month: "short" })}`
+  );
 
-  const priceBox = document.getElementById("price-container");
-  if (!priceBox) return;
-  priceBox.innerHTML = "";
+  const priceContainer = document.getElementById("price-container");
+  priceContainer.innerHTML = "";
 
-  event.details.prices.forEach((price, index) => {
+  event.details.prices.forEach(ticket => {
     const div = document.createElement("div");
     div.className = "single-ticket";
 
     div.innerHTML = `
-      <h3>${price.type}</h3>
-      <p>${price.currency} ${price.amount.toLocaleString()}</p>
-      <button type="button">Buy</button>
+      <h3>${ticket.type}</h3>
+      <p>${ticket.currency} ${ticket.amount.toLocaleString()}</p>
+      <button>Buy</button>
     `;
 
-    div.querySelector("button").addEventListener("click", () => openModal(price));
-    priceBox.appendChild(div);
+    div.querySelector("button").addEventListener("click", () => {
+      openPaymentModal(ticket);
+    });
+
+    priceContainer.appendChild(div);
   });
 }
 
-// ===============================
+// ======================================
 // RELATED EVENTS
-// ===============================
+// ======================================
 function renderRelatedEvents(events, currentId) {
-  const box = document.getElementById("related-events");
-  if (!box) return;
-  box.innerHTML = "";
+  const container = document.getElementById("related-events");
+  container.innerHTML = "";
 
-  events.filter(e => e.id !== currentId).slice(0, 4).forEach(event => {
-    const card = document.createElement("div");
-    card.className = "card-pin";
-    card.innerHTML = `
-      <img src="${event.card.image}" alt="${event.card.title}">
-      <a href="./single_event.html?id=${event.id}">
-        <h4>${event.card.title}</h4>
-      </a>
-    `;
-    box.appendChild(card);
-  });
+  events
+    .filter(e => e.id !== currentId)
+    .slice(0, 4)
+    .forEach(event => {
+      const card = document.createElement("div");
+      card.className = "card-pin";
+
+      card.innerHTML = `
+        <img src="${event.card.image}" alt="${event.card.title}">
+        <a href="./single_event.html?id=${event.id}">
+          <h4>${event.card.title}</h4>
+        </a>
+      `;
+
+      container.appendChild(card);
+    });
 }
 
-// ===============================
-// MODAL
-// ===============================
-function openModal(ticket) {
+// ======================================
+// PAYMENT MODAL
+// ======================================
+function openPaymentModal(ticket) {
   selectedTicket = ticket;
 
   setText("selected-ticket", ticket.type);
-  setText("selected-price", `${ticket.currency} ${ticket.amount.toLocaleString()}`);
+  setText(
+    "selected-price",
+    `${ticket.currency} ${ticket.amount.toLocaleString()}`
+  );
 
-  const qtyInput = document.getElementById("quantity");
-  if (qtyInput) qtyInput.value = 1;
+  document.getElementById("quantity").value = 1;
 
-  const modal = document.getElementById("payment-modal");
-  if (modal) modal.classList.remove("hidden");
+  document.getElementById("payment-modal").classList.remove("hidden");
 }
 
 function closeModal() {
-  const modal = document.getElementById("payment-modal");
-  if (modal) modal.classList.add("hidden");
+  document.getElementById("payment-modal").classList.add("hidden");
 }
 
-// ===============================
-// CART FUNCTIONS
-// ===============================
+// ======================================
+// ADD TO CART
+// ======================================
 function addToCart() {
   if (!currentEvent || !selectedTicket) {
-    alert("No ticket selected");
+    alert("No ticket selected.");
     return;
   }
 
-  const qty = Number(document.getElementById("quantity").value) || 1;
+  const qty = parseInt(document.getElementById("quantity").value);
 
-  const existing = cart.find(i => i.eventId === currentEvent.id && i.type === selectedTicket.type);
-  if (existing) {
-    existing.quantity += qty;
-    existing.total = existing.amount * existing.quantity;
+  if (!qty || qty < 1) {
+    alert("Invalid quantity.");
+    return;
+  }
+
+  // Ensure cart is always an array
+  if (!Array.isArray(cart)) cart = [];
+
+  const existingItem = cart.find(item =>
+    String(item.eventId) === String(currentEvent.id) &&
+    item.type === selectedTicket.type
+  );
+
+  if (existingItem) {
+    existingItem.quantity += qty;
+    existingItem.total = existingItem.quantity * existingItem.amount;
   } else {
     cart.push({
       eventId: currentEvent.id,
@@ -148,95 +180,123 @@ function addToCart() {
     });
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  renderCart();
+  saveCart();
   closeModal();
+  alert("Ticket added to cart.");
 }
 
+// ======================================
+// REMOVE FROM CART
+// ======================================
 function removeFromCart(index) {
   cart.splice(index, 1);
+  saveCart();
+}
+
+// ======================================
+// SAVE CART STATE
+// ======================================
+function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
   renderCart();
 }
 
+// ======================================
+// UPDATE CART COUNT
+// ======================================
 function updateCartCount() {
-  const countEl = document.getElementById("cart-count");
-  if (countEl) countEl.textContent = cart.reduce((sum, i) => sum + i.quantity, 0);
+  if (!Array.isArray(cart)) cart = [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").textContent = count;
 }
 
+// ======================================
+// RENDER CART
+// ======================================
 function renderCart() {
   const summary = document.getElementById("cart-summary");
   const totalEl = document.getElementById("cart-total");
-  if (!summary || !totalEl) return;
 
   summary.innerHTML = "";
-  let total = 0;
 
-  if (cart.length === 0) {
+  if (!Array.isArray(cart) || cart.length === 0) {
     summary.innerHTML = "<p>Your cart is empty.</p>";
     totalEl.textContent = "";
     return;
   }
 
-  cart.forEach((item, i) => {
+  let total = 0;
+
+  cart.forEach((item, index) => {
     total += item.total;
+
     const div = document.createElement("div");
     div.className = "cart-item";
+
     div.innerHTML = `
-      <p>${item.title} - ${item.type} x ${item.quantity} = NGN ${item.total.toLocaleString()}</p>
-      <button type="button" onclick="removeFromCart(${i})">Remove</button>
+      <p><strong>${item.title}</strong></p>
+      <p>${item.type} × ${item.quantity}</p>
+      <p>NGN ${item.total.toLocaleString()}</p>
+      <button onclick="removeFromCart(${index})">Remove</button>
+      <hr/>
     `;
+
     summary.appendChild(div);
   });
 
   totalEl.textContent = `Total: NGN ${total.toLocaleString()}`;
 }
 
+// ======================================
+// CART MODAL
+// ======================================
 function openCartModal() {
-  const modal = document.getElementById("cart-modal");
-  if (modal) modal.classList.remove("hidden");
+  document.getElementById("cart-modal").classList.remove("hidden");
   renderCart();
 }
 
 function closeCartModal() {
-  const modal = document.getElementById("cart-modal");
-  if (modal) modal.classList.add("hidden");
+  document.getElementById("cart-modal").classList.add("hidden");
 }
 
-// ===============================
+// ======================================
 // PAYSTACK PAYMENT
-// ===============================
+// ======================================
 function payWithPaystack() {
-  if (cart.length === 0) return alert("Cart is empty!");
+  if (!Array.isArray(cart) || cart.length === 0) {
+    alert("Cart is empty.");
+    return;
+  }
 
-  const total = cart.reduce((sum, item) => sum + item.total, 0) * 100; // kobo
+  const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
 
   const handler = PaystackPop.setup({
-    key: "YOUR_PUBLIC_KEY", // replace with your key
-    email: "customer@example.com", // replace with user email
-    amount: total,
+    key: "YOUR_PUBLIC_KEY", // Replace with your real key
+    email: "customer@email.com", // Replace with real user email
+    amount: totalAmount * 100,
     currency: "NGN",
-    onClose: function () {
-      alert("Transaction was not completed.");
-    },
+    ref: "EVT_" + Date.now(),
+
     callback: function (response) {
       alert("Payment successful! Ref: " + response.reference);
+
       cart = [];
-      localStorage.removeItem("cart");
-      updateCartCount();
-      renderCart();
+      saveCart();
       closeCartModal();
     },
+
+    onClose: function () {
+      alert("Transaction cancelled.");
+    }
   });
 
   handler.openIframe();
 }
 
-// ===============================
-// HELPER FUNCTIONS
-// ===============================
+// ======================================
+// HELPERS
+// ======================================
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
@@ -247,15 +307,18 @@ function setBackground(id, url) {
   if (el) el.style.backgroundImage = `url(${url})`;
 }
 
-function showError(msg) {
-  document.body.innerHTML = `<h2 style="color:red;text-align:center;margin-top:50px;">${msg}</h2>`;
+function showError(message) {
+  document.body.innerHTML = `
+    <h2 style="color:red;text-align:center;margin-top:50px;">
+      ${message}
+    </h2>
+  `;
 }
 
 function changeQuantity(delta) {
-  const qtyInput = document.getElementById("quantity");
-  if (!qtyInput) return;
-  let qty = Number(qtyInput.value) || 1;
-  qty += delta;
-  if (qty < 1) qty = 1;
-  qtyInput.value = qty;
+  const input = document.getElementById("quantity");
+  let value = parseInt(input.value) || 1;
+  value += delta;
+  if (value < 1) value = 1;
+  input.value = value;
 }

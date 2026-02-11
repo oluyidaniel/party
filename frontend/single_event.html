@@ -62,14 +62,17 @@
 
 <!-- Cart Modal -->
 <div id="cart-modal" class="modal hidden">
-  <div>
+  <div class="modal-content">
     <h3>Your Cart</h3>
     <div id="cart-summary"></div>
     <p id="cart-total"></p>
+
+    <button onclick="payWithPaystack()">Proceed to Payment</button>
     <button onclick="closeCartModal()">Close</button>
-  </div> 
+  </div>
 </div>
 
 <script src="./script/event-details.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>
