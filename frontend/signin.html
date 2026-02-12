@@ -13,14 +13,9 @@
     <nav>
         <div class="navbar">
             <div class="eve-logo">
-                 <img src="../frontend/assest/Ellipse 1.png" alt="logo.png" width="70">
+                <img src="../frontend/assest/Ellipse 1.png" alt="logo.png" width="70">
             </div>
-            <!-- <div class="bar">
-                <a href="./index.html">Home</a>
-                <a href="./event.html">Events</a>
-                <a href="./contact.html">Contact Us</a>
-                <a href="./faq.html">FAQ</a>
-            </div> -->
+
         </div>
         <div class="btn">
             <button><a href="./signup.html">Sign up</a></button>
@@ -28,27 +23,37 @@
     </nav>
     <section class="sign--up">
         <div class="signup--img">
-           
-        </div>  
+
+        </div>
         <div class="signup--form">
             <h2>Welcome Back! </h2>
             <div class="signup-form">
-                <form action="text" id="signinForm">
-                    <label for="text">Email Address</label>
-                    <p><input type="email" name="Email" id="email" placeholder="Email Address"></p>
-                    <label for="text">Enter Password</label>
-                    <p><input type="password" name="password" id="password" placeholder="Password"></p>
+                <form id="signinForm">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
+
+                    <label for="password">Enter Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+
                     <div class="text-1">
-                        <!-- <div><input type="checkbox" name="remember" id=""> Remember me</p></div> -->
                         <p class="text-3"><a href="/App/html/forgotpassword.html">Forgot Password?</a></p>
                     </div>
-                    <p><input type="button" value="Login " name="Login " id="submit" onclick="location.href='./home.html'"></p>
-                </form>            
+
+                    <input type="button" value="Login" id="submit">
+                </form>
+
+                <!-- Feedback modal -->
+                <div id="feedbackModal" class="modal hidden">
+                    <div class="modal-content">
+                        <p id="feedbackMessage"></p>
+                        <button onclick="closeFeedbackModal()">Close</button>
+                    </div>
+                </div>
             </div>
             <p class="text-down">Don’t have an account? <a href="./signup.html">Sign up</a></p>
         </div>
     </section>
-
+ <script src="./script/login.js"></script>
 </body>
 
 </html>
