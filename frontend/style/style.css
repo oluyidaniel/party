@@ -32,7 +32,6 @@ body.fade-in-load {
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
-    /* border: none; */
 }
 /* ======================================
    MODAL BASE STYLES
@@ -106,6 +105,7 @@ button:hover {
     margin: 20% auto;
     width: 95%;
   }
+
 }
 header {
     padding: 0 6%;
@@ -172,20 +172,8 @@ nav {
     width: 100%;
 }
 
-.btn>a {
-    background-color: #F1DB4B;
-    margin: 20px 20px;
-    border-radius: 10px;
-    padding: 10px 25px;
-    border: none;
-    font-weight: 500;
-    font-family: "Playfair Display", serif;
-    color: #fff;
-}
-
-.btn>button:hover {
-    border: 1px solid #F1DB4B;
-    background-color: transparent;
+.btn{
+    color: black;
 }
 
 .spe {
@@ -969,15 +957,7 @@ nav {
         width: 80%;
     }
 
-    .btn>button {
-        margin: 18px 18px;
-        width: 95px;
-        height: 2.2rem;
-
-        a {
-            font-size: 13px;
-        }
-    }
+    
 
     .spe {
         font-size: 13px;
@@ -1002,8 +982,7 @@ nav {
         }
     }
 
-    .bar,
-    .btn {
+    .bar{
         display: none;
         flex-direction: column;
         background-color: white;
@@ -1017,13 +996,13 @@ nav {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .btn {
+    /* .btn {
         position: absolute;
         top: 280px;
         text-align: center;
         align-items: center;
 
-    }
+    } */
 
     .bar.show,
     .btn.show {
@@ -1231,7 +1210,9 @@ nav {
         }
 
         .head-button {
-            width: 100px;
+            text-align: center !important;
+            width: 100% !important;
+            margin: 5px !important;
             font-size: 10px;
             /* text-align: center; */
             padding: 0 10px;

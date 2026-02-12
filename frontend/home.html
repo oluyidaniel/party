@@ -32,19 +32,22 @@
             <a href="./contact.html">Contact Us</a>
             <a href="./faq.html">FAQ</a>
         </div>
-        <div class="btn" id="nav-buttons">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span id="cart-count">0</span>
-        </div>
-        <!-- Cart Modal -->
-        <div id="cart-modal" class="modal hidden">
-            <div class="modal-content">
-                <h3>Your Cart</h3>
-                <div id="cart-summary"></div>
-                <p id="cart-total"></p>
 
-                <button onclick="payWithPaystack()" class="cart_button">Proceed to Payment</button>
-                <button onclick="closeCartModal()" class="cart_button">Close</button>
+        <div>
+            <div class="btn" id="nav-buttons">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+            <!-- Cart Modal -->
+            <div id="cart-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h3>Your Cart</h3>
+                    <div id="cart-summary"></div>
+                    <p id="cart-total"></p>
+
+                    <button onclick="payWithPaystack()" class="cart_button">Proceed to Payment</button>
+                    <button onclick="closeCartModal()" class="cart_button">Close</button>
+                </div>
             </div>
         </div>
 
@@ -52,6 +55,7 @@
             <i class="fa-solid fa-bars" id="open-menu"></i>
             <i class="fa-solid fa-xmark" id="close-menu" style="display: none;"></i>
         </div>
+        
     </nav>
     <!-- ======================HERO-SECTION====================== -->
     <header>
@@ -621,6 +625,4 @@
         });
     </script>
 </body>
-
-
 </html>
