@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
 const eventsContainer = document.getElementById("eventsContainer");
 const totalEventsEl = document.getElementById("totalEvents");

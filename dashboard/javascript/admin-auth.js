@@ -1,7 +1,7 @@
 // ===============================
 // CONFIG
 // ===============================
-const AUTH_API = "http://localhost:5000/api/auth";
+const AUTH_API = "https://party-backend-mj21.onrender.com/api/auth";
 
 // ===============================
 // ELEMENTS
