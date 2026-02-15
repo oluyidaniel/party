@@ -3,14 +3,13 @@
 // ===============================
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
-// ===============================
-// AUTH GUARD
-// ===============================
-function requireAdminAuth() {
-  const token = localStorage.getItem("adminToken");
+/* ---------------- AUTH GUARD ---------------- */
+
+function requireUserAuth() {
+  const token = localStorage.getItem("userToken"); // must match what you store at login
 
   if (!token) {
-    alert("Admin login required.");
+    alert("Please login to continue.");
     window.location.href = "../html/admin-login.html";
     return false;
   }
@@ -18,9 +17,23 @@ function requireAdminAuth() {
   return true;
 }
 
-if (!requireAdminAuth()) {
-  throw new Error("Not authenticated");
+if (!requireUserAuth()) {
+  throw new Error("User not authenticated");
 }
+
+// ===============================
+// DISPLAY ADMIN NAME
+// ===============================
+function displayAdminName() {
+  const name = localStorage.getItem("adminName");
+  const welcomeText = document.getElementById("welcomeText");
+
+  if (name && welcomeText) {
+    welcomeText.textContent = `Welcome ${name}`;
+  }
+}
+
+displayAdminName();
 
 // ===============================
 // ELEMENTS
@@ -43,16 +56,18 @@ const addTicketBtn = document.getElementById("add");
 // ===============================
 // IMAGE PREVIEW
 // ===============================
-inputs.imageUpload.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+if (inputs.imageUpload) {
+  inputs.imageUpload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = () => {
-    inputs.heroImage.src = reader.result;
-  };
-  reader.readAsDataURL(file);
-});
+    const reader = new FileReader();
+    reader.onload = () => {
+      inputs.heroImage.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 // ===============================
 // ADD TICKET
@@ -77,10 +92,12 @@ function createTicketForm() {
   return wrapper;
 }
 
-addTicketBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  ticketContainer.appendChild(createTicketForm());
-});
+if (addTicketBtn) {
+  addTicketBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    ticketContainer.appendChild(createTicketForm());
+  });
+}
 
 // ===============================
 // COLLECT DATA
@@ -89,18 +106,9 @@ function collectFormData() {
   const tickets = [];
 
   document.querySelectorAll(".form-set").forEach((form) => {
-    const categoryEl = form.querySelector(".ticketCategory");
-    const priceEl = form.querySelector(".ticketPrice");
-    const benefitsEl = form.querySelector(".ticketBenefits");
-
-    if (!categoryEl || !priceEl) {
-      console.warn("Missing ticket fields inside .form-set");
-      return;
-    }
-
-    const category = categoryEl.value.trim();
-    const price = priceEl.value.trim();
-    const benefits = benefitsEl ? benefitsEl.value.trim() : "";
+    const category = form.querySelector(".ticketCategory")?.value.trim();
+    const price = form.querySelector(".ticketPrice")?.value.trim();
+    const benefits = form.querySelector(".ticketBenefits")?.value.trim() || "";
 
     if (category && price) {
       tickets.push({
@@ -111,22 +119,13 @@ function collectFormData() {
     }
   });
 
-  if (!inputs?.title ||
-      !inputs?.location ||
-      !inputs?.price ||
-      !inputs?.time ||
-      !inputs?.description ||
-      !inputs?.heroImage) {
-    throw new Error("One or more main form inputs are missing in the DOM.");
-  }
-
   return {
-    title: inputs.title.value.trim(),
-    location: inputs.location.value.trim(),
-    price: Number(inputs.price.value),
-    time: inputs.time.value.trim(),
-    description: inputs.description.value.trim(),
-    heroImage: inputs.heroImage.src,
+    title: inputs.title?.value.trim(),
+    location: inputs.location?.value.trim(),
+    price: Number(inputs.price?.value),
+    time: inputs.time?.value.trim(),
+    description: inputs.description?.value.trim(),
+    heroImage: inputs.heroImage?.src,
     tickets
   };
 }
@@ -146,55 +145,59 @@ function validateEvent(data) {
 // ===============================
 // PREVIEW
 // ===============================
-previewBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("Preview:", collectFormData());
-  alert("Check console for preview data.");
-});
+if (previewBtn) {
+  previewBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("Preview:", collectFormData());
+    alert("Check console for preview data.");
+  });
+}
 
 // ===============================
 // PUBLISH EVENT
 // ===============================
-publishBtn.addEventListener("click", async (e) => {
-  e.preventDefault();
+if (publishBtn) {
+  publishBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  const token = localStorage.getItem("adminToken");
+    const token = localStorage.getItem("adminToken");
 
-  if (!token) {
-    alert("Session expired. Please login again.");
-    window.location.href = "../html/admin-login.html";
-    return;
-  }
-
-  const eventData = collectFormData();
-  const error = validateEvent(eventData);
-
-  if (error) {
-    alert(error);
-    return;
-  }
-
-  try {
-    const response = await fetch(`${API_BASE}/admin/events`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify(eventData)
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-      throw new Error(result.message || "Failed to create event");
+    if (!token) {
+      alert("Session expired. Please login again.");
+      window.location.href = "../html/admin-login.html";
+      return;
     }
 
-    alert("Event created successfully!");
-    window.location.reload();
+    const eventData = collectFormData();
+    const error = validateEvent(eventData);
 
-  } catch (error) {
-    console.error(error);
-    alert(error.message);
-  }
-});
+    if (error) {
+      alert(error);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_BASE}/admin/events`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(eventData)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to create event");
+      }
+
+      alert("Event created successfully!");
+      window.location.reload();
+
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
+  });
+}

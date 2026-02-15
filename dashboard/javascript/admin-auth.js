@@ -55,9 +55,14 @@ loginForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ✅ Store token consistently
+    // ✅ Store token
     localStorage.setItem("adminToken", data.token);
+
+    // ✅ Store full user object
     localStorage.setItem("adminUser", JSON.stringify(data.user));
+
+    // ✅ Store just the name (for header display)
+    localStorage.setItem("adminName", data.user.name);
 
     showFeedback("Login successful! Redirecting...");
 

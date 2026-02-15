@@ -1,5 +1,24 @@
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
+
+/* ---------------- AUTH GUARD ---------------- */
+
+function requireUserAuth() {
+  const token = localStorage.getItem("userToken"); // must match what you store at login
+
+  if (!token) {
+    alert("Please login to continue.");
+    window.location.href = "../dashboard/html/admin-login.html";
+    return false;
+  }
+
+  return true;
+}
+
+if (!requireUserAuth()) {
+  throw new Error("User not authenticated");
+}
+
 const eventsContainer = document.getElementById("eventsContainer");
 const totalEventsEl = document.getElementById("totalEvents");
 const upcomingEventsEl = document.getElementById("upcomingEvents");
@@ -103,7 +122,7 @@ prevBtn.addEventListener("click", () => {
 /* ---------------- CREATE EVENT BUTTON ---------------- */
 
 document.querySelector(".create-btn").addEventListener("click", () => {
-  window.location.href = "/App/html/create-event.html";
+  window.location.href = "./html/create-event.html";
 });
 
 /* ---------------- UTIL ---------------- */
