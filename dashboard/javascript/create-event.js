@@ -3,41 +3,47 @@
 // ===============================
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
-/* ---------------- AUTH GUARD ---------------- */
+/* ================= AUTH SYSTEM ================= */
 
-function requireUserAuth() {
-  const token = localStorage.getItem("userToken"); // must match what you store at login
+function getToken() {
+  return localStorage.getItem("adminToken"); // must match login
+}
+
+function redirectToLogin() {
+  alert("Please login to continue.");
+  window.location.href = "../html/admin-login.html";
+}
+
+function requireAuth() {
+  const token = getToken();
 
   if (!token) {
-    alert("Please login to continue.");
-    window.location.href = "../html/admin-login.html";
+    redirectToLogin();
     return false;
   }
 
   return true;
 }
 
-if (!requireUserAuth()) {
-  throw new Error("User not authenticated");
+if (!requireAuth()) {
+  throw new Error("Not authenticated");
 }
 
-// ===============================
-// DISPLAY ADMIN NAME
-// ===============================
+/* ================= DISPLAY ADMIN NAME ================= */
+
 function displayAdminName() {
-  const name = localStorage.getItem("adminName");
+  const admin = JSON.parse(localStorage.getItem("adminUser"));
   const welcomeText = document.getElementById("welcomeText");
 
-  if (name && welcomeText) {
-    welcomeText.textContent = `Welcome ${name}`;
+  if (admin?.name && welcomeText) {
+    welcomeText.textContent = `Welcome ${admin.name}`;
   }
 }
 
 displayAdminName();
 
-// ===============================
-// ELEMENTS
-// ===============================
+/* ================= DOM ELEMENTS ================= */
+
 const inputs = {
   title: document.getElementById("title"),
   location: document.getElementById("location"),
@@ -53,9 +59,8 @@ const previewBtn = document.querySelector(".spe");
 const ticketContainer = document.querySelector(".ticket-input");
 const addTicketBtn = document.getElementById("add");
 
-// ===============================
-// IMAGE PREVIEW
-// ===============================
+/* ================= IMAGE PREVIEW ================= */
+
 if (inputs.imageUpload) {
   inputs.imageUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
@@ -69,9 +74,8 @@ if (inputs.imageUpload) {
   });
 }
 
-// ===============================
-// ADD TICKET
-// ===============================
+/* ================= ADD TICKET ================= */
+
 function createTicketForm() {
   const wrapper = document.createElement("div");
   wrapper.className = "form-set";
@@ -99,9 +103,8 @@ if (addTicketBtn) {
   });
 }
 
-// ===============================
-// COLLECT DATA
-// ===============================
+/* ================= COLLECT DATA ================= */
+
 function collectFormData() {
   const tickets = [];
 
@@ -130,9 +133,8 @@ function collectFormData() {
   };
 }
 
-// ===============================
-// VALIDATION
-// ===============================
+/* ================= VALIDATION ================= */
+
 function validateEvent(data) {
   if (!data.title) return "Title is required";
   if (!data.location) return "Location is required";
@@ -142,9 +144,8 @@ function validateEvent(data) {
   return null;
 }
 
-// ===============================
-// PREVIEW
-// ===============================
+/* ================= PREVIEW ================= */
+
 if (previewBtn) {
   previewBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -153,18 +154,16 @@ if (previewBtn) {
   });
 }
 
-// ===============================
-// PUBLISH EVENT
-// ===============================
+/* ================= PUBLISH EVENT ================= */
+
 if (publishBtn) {
   publishBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("adminToken");
+    const token = getToken();
 
     if (!token) {
-      alert("Session expired. Please login again.");
-      window.location.href = "../html/admin-login.html";
+      redirectToLogin();
       return;
     }
 
@@ -185,6 +184,12 @@ if (publishBtn) {
         },
         body: JSON.stringify(eventData)
       });
+
+      if (response.status === 401) {
+        localStorage.removeItem("adminToken");
+        redirectToLogin();
+        return;
+      }
 
       const result = await response.json();
 
