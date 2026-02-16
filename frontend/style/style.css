@@ -139,11 +139,15 @@ nav {
 .logo>img {
     width: 70%;
 }
-
+.auth{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
 .bar>a {
     list-style: none;
     display: inline-block;
-    padding: 20px 20px;
+    padding: 20px 20px !important;
     color: #000000 !important;
     position: relative;
     font-size: 18px;
@@ -174,6 +178,24 @@ nav {
 
 .btn{
     color: black;
+    padding: 10px !important;
+}
+.btn > a{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 10px ;
+    color: #000000 !important;
+    position: relative;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    border-radius: 10px;
+}
+.btn >a:hover {
+    color: #E9A804;
 }
 
 .spe {
