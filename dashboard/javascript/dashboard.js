@@ -1,23 +1,32 @@
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
+/* ================= AUTH GUARD ================= */
 
-/* ---------------- AUTH GUARD ---------------- */
+function getToken() {
+  return localStorage.getItem("adminToken"); // must match login
+}
 
-function requireUserAuth() {
-  const token = localStorage.getItem("userToken"); // must match what you store at login
+function redirectToLogin() {
+  alert("Please login to continue.");
+  window.location.href = "../dashboard/html/admin-login.html";
+}
+
+function requireAuth() {
+  const token = getToken();
 
   if (!token) {
-    alert("Please login to continue.");
-    window.location.href = "../dashboard/html/admin-login.html";
+    redirectToLogin();
     return false;
   }
 
   return true;
 }
 
-if (!requireUserAuth()) {
-  throw new Error("User not authenticated");
+if (!requireAuth()) {
+  throw new Error("Not authenticated");
 }
+
+/* ================= DOM ELEMENTS ================= */
 
 const eventsContainer = document.getElementById("eventsContainer");
 const totalEventsEl = document.getElementById("totalEvents");
@@ -28,21 +37,35 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const carousel = document.querySelector(".carousel");
 
-/* ---------------- FETCH EVENTS ---------------- */
+/* ================= FETCH EVENTS ================= */
 
 async function loadEvents() {
+  const token = getToken();
+
   try {
-    const res = await fetch(`${API_BASE}/events`);
+    const res = await fetch(`${API_BASE}/events`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (res.status === 401) {
+      localStorage.removeItem("adminToken");
+      redirectToLogin();
+      return;
+    }
+
     const events = await res.json();
 
     renderEvents(events);
     updateAnalytics(events);
+
   } catch (err) {
     console.error("Failed loading events:", err);
   }
 }
 
-/* ---------------- RENDER EVENTS ---------------- */
+/* ================= RENDER EVENTS ================= */
 
 function renderEvents(events) {
   eventsContainer.innerHTML = "";
@@ -90,11 +113,10 @@ function renderEvents(events) {
   });
 }
 
-/* ---------------- ANALYTICS ---------------- */
+/* ================= ANALYTICS ================= */
 
 function updateAnalytics(events) {
   const now = new Date();
-
   let upcoming = 0;
   let past = 0;
 
@@ -109,23 +131,30 @@ function updateAnalytics(events) {
   pastEventsEl.textContent = past;
 }
 
-/* ---------------- CAROUSEL NAVIGATION ---------------- */
+/* ================= CAROUSEL ================= */
 
-nextBtn.addEventListener("click", () => {
-  carousel.scrollBy({ left: 300, behavior: "smooth" });
-});
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    carousel.scrollBy({ left: 300, behavior: "smooth" });
+  });
+}
 
-prevBtn.addEventListener("click", () => {
-  carousel.scrollBy({ left: -300, behavior: "smooth" });
-});
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    carousel.scrollBy({ left: -300, behavior: "smooth" });
+  });
+}
 
-/* ---------------- CREATE EVENT BUTTON ---------------- */
+/* ================= CREATE EVENT BUTTON ================= */
 
-document.querySelector(".create-btn").addEventListener("click", () => {
-  window.location.href = "./html/create-event.html";
-});
+const createBtn = document.querySelector(".create-btn");
+if (createBtn) {
+  createBtn.addEventListener("click", () => {
+    window.location.href = "./html/create-event.html";
+  });
+}
 
-/* ---------------- UTIL ---------------- */
+/* ================= UTIL ================= */
 
 function formatDate(date, time) {
   if (!date) return "No date";
@@ -133,6 +162,6 @@ function formatDate(date, time) {
   return `${d.toDateString()} ${time || ""}`;
 }
 
-/* ---------------- INIT ---------------- */
+/* ================= INIT ================= */
 
 loadEvents();
