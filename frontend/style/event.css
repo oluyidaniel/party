@@ -1033,6 +1033,35 @@ h4 {
             display: none;
         }
     }
+    .footer {
+        max-width: 100%;
+        height: auto;
+        background-color: #000000;
+        color: #fff;
+        padding: 20px 6%;
+
+        .footer-class {
+            display: flex;
+            text-align: left;
+            flex-direction: column;
+            justify-content: left;
+            padding-top: 40px;
+            padding-bottom: 40px;
+
+
+            p {
+                padding-bottom: 10px;
+            }
+        }
+
+        .line-down {
+            font-size: 20px !important;
+        }
+
+        h4 {
+            text-align: center;
+        }
+    }
 
     .footer--div>h2 {
         font-size: 15px;
