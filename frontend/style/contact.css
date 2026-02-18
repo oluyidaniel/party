@@ -8,6 +8,81 @@
     text-decoration: none;
     /* border: none; */
 }
+/* ======================================
+   MODAL BASE STYLES
+====================================== */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed; /* stay in place */
+  z-index: 1000 !important; /* above everything else */
+  left: 0;
+  top: 0;
+  width: 100%; /* full width */
+  height: 100vh !important; /* full height */
+  overflow: auto; /* scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  transition: opacity 0.3s ease;
+}
+
+.modal .modal-content {
+  background-color: #fff;
+  margin: 10% auto; /* center vertically and horizontally */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+/* Show modal when .hidden is removed */
+.modal.hidden {
+  display: none;
+}
+
+.modal:not(.hidden) {
+  display: block;
+}
+
+/* Cart items inside modal */
+.cart-item {
+  margin-bottom: 15px;
+}
+
+.cart-item p {
+  margin: 4px 0;
+}
+
+.cart_button{
+  cursor: pointer;
+  padding: 8px 15px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #0077ff ;
+  color: white;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #005fcc;
+}
+
+/* Cart total */
+#cart-total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .modal .modal-content {
+    margin: 20% auto;
+    width: 95%;
+  }
+
+}
+
 .nav-animate {
     animation: fadeDownNav 0.8s ease-out forwards;
     opacity: 0;
@@ -32,20 +107,22 @@ body.fade-in-load {
   }
 }
 
+
+
 header {
     padding: 0 6%;
     padding-top: 100px;
     background: radial-gradient(103.5% 90.93% at 0% 2.4%, rgba(241, 242, 194, 0.29) 0%, rgba(247, 247, 159, 0.29) 57.5%, rgba(249, 249, 186, 0.29) 69.5%, rgba(255, 255, 255, 0.29) 100%);
 }
 
-navbar {
+nav {
     display: flex;
     padding: 20px 0;
     justify-content: space-between;
     align-items: center;
     top: 0;
     right: 0;
-    z-index: 1000;
+    /* z-index: 1000; */
     color: #000 !important;
     width: 100%;
     background: #fff;
@@ -54,6 +131,7 @@ navbar {
     position: fixed;
     transition: .3s;
 }
+
 
 .logo>img {
     width: 90%;
@@ -106,7 +184,11 @@ navbar {
     }
 }
 
-
+.menu-bar {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 .spe {
     background-color: #eaf88c !important;
     cursor: pointer;
@@ -120,28 +202,22 @@ navbar {
     background-color: #f0f0f0;
 
     .contact-heading {
-        display: flex;
-        position: relative;
+        text-align: center !important;
+        align-items: center;
         padding-top: 35px;
-        justify-content: space-between;
 
-        img {
-            max-width: 100%;
-            width: 300px;
-
-            height: auto;
-        }
     }
 
     .contact-head {
-        position: relative;
-        left: 35%;
         padding-top: 90px;
         text-align: center;
+        align-items: center;
+        background-color: white;
 
         h1 {
             font-size: 48px;
             padding-bottom: 20px;
+            text-align: center;
              font-family: "poppins", sans-serif;
         }
 
@@ -263,20 +339,19 @@ navbar {
         }
     }
 
+    .menu-bar {
+        display: block;
+    }
 
     .contact-us {
     
     .contact-heading {
-            img {
-                max-width: 100%;
-                width: 200px;
-        }
+        
 
         .contact-head {
-            position: relative;
-            left: 21%;
             padding-top: 50px;
             text-align: center;
+            align-items: center;
 
             h1 {
                 font-size: 40px;
@@ -338,8 +413,7 @@ navbar {
 @media (max-width: 600px){
      .contact-heading {
         .contact-head {
-            position: relative;
-            left: 25%;
+           
             padding-top: 90px;
             text-align: center;
 
@@ -417,6 +491,76 @@ navbar {
             text-align: center;
         }
     }
+
+    .footer--div>h2 {
+        font-size: 15px;
+        padding-bottom: 10px;
+    }
+
+    .in-put {
+        padding-bottom: 5px;
+        padding-top: 5px;
+
+        #mail {
+            width: 80%;
+            height: 35px;
+            background-color: transparent;
+            border: 1px solid rgba(241, 219, 75, 1);
+            color: white;
+            padding: 10px 10px;
+        }
+
+        #search {
+            width: 90px;
+            height: 35px;
+            background: rgba(231, 158, 3, 1);
+            border: none;
+            color: white;
+
+            ::placeholder {
+                color: #fff;
+            }
+        }
+    }
+
+    .footer-header {
+        padding: 20px 10%;
+        display: flex;
+        flex-direction: column-reverse;
+        color: #fff;
+        justify-content: space-between;
+    }
+    .event--block {
+        text-align: center;
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .foter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 90px;
+    }
+
+    .foter-1 {
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 18px;
+            padding-bottom: 5px;
+            
+        }
+
+        p {
+            font-size: 17px;
+            padding-bottom: 9px;
+        }
+    }
+     .line-down {
+            font-size: 20px !important;
+        }
 }
 @media screen and (max-width: 425px) {
   .navbar {
@@ -465,7 +609,6 @@ navbar {
   }
 
   .contact-heading {
-    flex-direction: column;
     align-items: center;
     padding: 20px 0;
   }

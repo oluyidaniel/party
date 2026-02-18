@@ -7,42 +7,60 @@
     <link rel="shortcut icon" href="../images/icons/Ellipse 1.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConatctUs</title>
-     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style/event-style.css">
+        <link rel="stylesheet" href="../frontend/style/cart.css">
 </head>
 
 <body class="fade-in-load">
     <header class="nav-animate">
-        <navbar>
+        <nav>
             <div class="eve-logo">
                 <img src="../frontend/assest/Ellipse 1.png" alt="logo.png" width="70">
             </div>
 
             <div class="bar">
-                <a href="../index.html">Home</a>
+                <a href="./home.html">Home</a>
                 <a href="./event.html">Events</a>
                 <a href="./contact.html">Contact Us</a>
                 <a href="./faq.html">FAQ</a>
             </div>
-            <div class="btn">
-                <i class="fa-solid fa-cart-shopping"></i>
+
+            <div>
+                <div class="btn" id="nav-buttons">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                </div>
+                <!-- Cart Modal -->
+                <div id="cart-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <h3>Your Cart</h3>
+                        <div id="cart-summary"></div>
+                        <p id="cart-total"></p>
+
+                        <button onclick="payWithPaystack()" class="cart_button">Proceed to Payment</button>
+                        <button onclick="closeCartModal()" class="cart_button">Close</button>
+                    </div>
+                </div>
             </div>
 
             <div class="menu-bar" id="menu-toggle">
-            <i class="fa-solid fa-bars" id="open-menu"></i>
-            <i class="fa-solid fa-xmark" id="close-menu" style="display: none;"></i>
-        </div>
-            
-        </navbar>
+                <i class="fa-solid fa-bars" id="open-menu"></i>
+                <i class="fa-solid fa-xmark" id="close-menu" style="display: none;"></i>
+            </div>
+        </nav>
     </header>
-    <section class="contact-us"  data-aos="fade-up" data-aos-anchor-placement="top-center">
+
+    <section class="contact-us" data-aos="fade-up" data-aos-anchor-placement="top-center">
         <div class="contact-heading">
             <div class="contact-head">
                 <h1>Contact us </h1>
                 <p>Get in Touch and let us know how we can help</p>
             </div>
-            <div>
-                <img src="../images/images/contact-us-5795988-4849052 1.webp" alt="">
-            </div>
+           
         </div>
 
         <div class="contact-zone">
@@ -100,8 +118,10 @@
         </div>
         <h4>Copyright&copy;Ande.Media 2024</h4>
     </footer>
-
-     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./script/cart.js"></script>
+    <script src="./script/event.js"></script>
+    <script src="./script/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             duration: 1000,
