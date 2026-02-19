@@ -179,60 +179,64 @@ function changeQuantity(delta) {
 }
 
 // ======================================
-// BACKEND PAYMENT INITIALIZATION
+// PAYSTACK PAYMENT
 // ======================================
-async function checkout() {
-  if (cart.length === 0) {
+function payWithPaystack() {
+  if (!Array.isArray(cart) || cart.length === 0) {
     alert("Cart is empty.");
     return;
   }
 
-  const emailInput = document.getElementById("customer-email");
-  if (!emailInput || !emailInput.value) {
-    alert("Please enter your email.");
-    return;
-  }
+  const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
 
-  const email = emailInput.value;
+  const handler = PaystackPop.setup({
+    key: "pk_test_2d5d40fcadf312c919d925e001af0131cb38b259", // Replace with your real key
+    email: "sallamtude7@gmail.com", // Replace with real user email
+    amount: totalAmount * 100,
+    currency: "NGN",
+    ref: "EVT_" + Date.now(),
 
-  try {
-    // For now, handle one event per checkout
-    const item = cart[0];
+    callback: function (response) {
+      alert("Payment successful! Ref: " + response.reference);
 
-    const response = await fetch("/api/payments/initialize", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        eventId: item.eventId,
-        ticketType: item.type,
-        quantity: item.quantity,
-        email: email
-      })
-    });
+      cart = [];
+      saveCart();
+      closeCartModal();
+    },
 
-    const data = await response.json();
-
-    if (!data.success) {
-      alert(data.message || "Payment initialization failed.");
-      return;
+    onClose: function () {
+      alert("Transaction cancelled.");
     }
+  });
 
-    // Redirect to Paystack hosted checkout
-    window.location.href = data.authorization_url;
-
-  } catch (error) {
-    console.error(error);
-    alert("Payment error. Try again.");
-  }
+  handler.openIframe();
 }
 
-
 // ======================================
-// HELPER FUNCTIONS
+// HELPERS
 // ======================================
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
+}
+
+function setBackground(id, url) {
+  const el = document.getElementById(id);
+  if (el) el.style.backgroundImage = `url(${url})`;
+}
+
+function showError(message) {
+  document.body.innerHTML = `
+    <h2 style="color:red;text-align:center;margin-top:50px;">
+      ${message}
+    </h2>
+  `;
+}
+
+function changeQuantity(delta) {
+  const input = document.getElementById("quantity");
+  let value = parseInt(input.value) || 1;
+  value += delta;
+  if (value < 1) value = 1;
+  input.value = value;
 }

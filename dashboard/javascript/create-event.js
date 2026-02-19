@@ -1,109 +1,42 @@
-const API_BASE = "https://party-backend-mj21.onrender.com/api";
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("eventForm");
 
-const inputs = {
-  title: document.getElementById("title"),
-  location: document.getElementById("location"),
-  date: document.getElementById("date"),
-  time: document.getElementById("time"),
-  description: document.getElementById("description"),
-  heroImage: document.getElementById("previewImage"),
-  imageUpload: document.getElementById("imageUpload")
-};
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-const ticketRows = document.getElementById("ticketRows");
-const publishBtn = document.getElementById("publishBtn");
+      // Collect form data
+      const eventData = {
+        title: document.getElementById("title").value,
+        location: document.getElementById("location").value,
+        date: document.getElementById("date").value,
+        time: document.getElementById("time").value,
+        price: document.getElementById("price").value,
+        description: document.getElementById("description").value,
+      };
 
-// Image preview
-inputs.imageUpload?.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => inputs.heroImage.src = reader.result;
-  reader.readAsDataURL(file);
-});
+      try {
+        const response = await fetch("http://localhost:5000/api/admin/events", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(eventData),
+        });
 
-// Add/Remove tickets
-ticketRows.addEventListener("click", e => {
-  if (e.target.classList.contains("addTicketBtn")) {
-    const row = document.createElement("div");
-    row.className = "ticket-row";
-    row.innerHTML = `
-      <input type="text" class="ticketCategory" placeholder="Ticket type">
-      <input type="number" class="ticketPrice" placeholder="Price">
-      <input type="text" class="ticketBenefits" placeholder="Benefits">
-      <button type="button" class="removeTicket">Remove</button>
-    `;
-    row.querySelector(".removeTicket").addEventListener("click", () => row.remove());
-    ticketRows.appendChild(row);
-  }
-});
+        const result = await response.json();
 
-// Collect form data
-function collectFormData() {
-  const prices = [];
-  document.querySelectorAll(".ticket-row").forEach(row => {
-    const type = row.querySelector(".ticketCategory")?.value.trim();
-    const amount = Number(row.querySelector(".ticketPrice")?.value);
-    const benefits = row.querySelector(".ticketBenefits")?.value.trim();
-    if (type && amount) prices.push({ type, amount, currency: "NGN", benefits });
-  });
+        if (response.ok) {
+          alert("Event created successfully ✅");
+          form.reset();
+        } else {
+          alert(result.message || "Failed to create event ❌");
+        }
 
-  return {
-    card: {
-      title: inputs.title?.value.trim(),
-      location: inputs.location?.value.trim(),
-      date: inputs.date?.value,
-      time: inputs.time?.value.trim(),
-      image: inputs.heroImage?.src,
-      peopleGoing: 0
-    },
-    details: {
-      bannerImage: inputs.heroImage?.src,
-      description: inputs.description?.value.trim(),
-      venue: inputs.location?.value.trim(),
-      prices,
-      cta: { label: "Buy Now", action: "#" }
-    }
-  };
-}
-
-// Validate
-function validateEvent(data) {
-  if (!data.card.title) return "Title is required";
-  if (!data.card.location) return "Location is required";
-  if (!data.card.date) return "Date is required";
-  if (!data.card.time) return "Time is required";
-  if (!data.details.description) return "Description is required";
-  if (data.details.prices.length === 0) return "At least one ticket is required";
-  return null;
-}
-
-// Submit Event
-publishBtn.addEventListener("click", async () => {
-  const token = localStorage.getItem("adminToken");
-  if (!token) return window.location.href = "../html/admin-login.html";
-
-  const data = collectFormData();
-  const error = validateEvent(data);
-  if (error) return alert(error);
-
-  try {
-    const res = await fetch(`${API_BASE}/admin/events`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify(data)
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Server error. Make sure backend is running.");
+      }
     });
-
-    const result = await res.json();
-    if (!res.ok) throw new Error(result.message || "Failed to create event");
-
-    alert("Event created successfully!");
-    window.location.reload();
-  } catch (err) {
-    console.error("Submit Error:", err);
-    alert(err.message);
   }
 });

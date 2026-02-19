@@ -7,7 +7,7 @@
         "location": "Abuja, Nigeria",
         "date": "2026-04-05",
         "time": "10:00 AM",
-        "image": "./assest/ai-summit.jpg",
+        "image": "./assest/download (1).jfif",
         "peopleGoing": 520
       },
       "details": {
@@ -44,7 +44,7 @@
         "location": "Port Harcourt, Nigeria",
         "date": "2026-04-12",
         "time": "09:30 AM",
-        "image": "./assest/cyber-workshop.jpg",
+        "image": "./assest/download (2).jfif",
         "peopleGoing": 310
       },
       "details": {
@@ -81,7 +81,7 @@
         "location": "Ibadan, Nigeria",
         "date": "2026-05-02",
         "time": "11:00 AM",
-        "image": "./assest/tech-meetup.jpg",
+        "image": "./assest/download (3).jfif",
         "peopleGoing": 280
       },
       "details": {
@@ -118,7 +118,7 @@
         "location": "Kano, Nigeria",
         "date": "2026-05-20",
         "time": "08:30 AM",
-        "image": "./assest/blockchain-ai.jpg",
+        "image": "./assest/download (4).jfif",
         "peopleGoing": 400
       },
       "details": {
@@ -155,7 +155,7 @@
         "location": "Enugu, Nigeria",
         "date": "2026-06-10",
         "time": "10:30 AM",
-        "image": "./assest/women-tech.jpg",
+        "image": "./assest/download (2).jfif",
         "peopleGoing": 350
       },
       "details": {
@@ -192,7 +192,7 @@
         "location": "Abuja, Nigeria",
         "date": "2026-06-25",
         "time": "09:00 AM",
-        "image": "./assest/smart-cities.jpg",
+        "image": "./assest/download (8).jfif",
         "peopleGoing": 470
       },
       "details": {
@@ -229,11 +229,11 @@
         "location": "Lagos, Nigeria",
         "date": "2026-07-08",
         "time": "10:00 AM",
-        "image": "./assest/ai-healthcare.jpg",
+        "image": "./assest/download (1).jfif",
         "peopleGoing": 390
       },
       "details": {
-        "bannerImage": "/images/events/ai-healthcare-banner.jpg",
+        "bannerImage": "./assest/download (6).jfif",
         "description": "Learn how AI is transforming healthcare delivery, diagnostics, and patient care through interactive panels and case studies.",
         "venue": "Lagos Medical Conference Center, Lagos",
         "prices": [
@@ -266,7 +266,7 @@
         "location": "Abuja, Nigeria",
         "date": "2026-07-22",
         "time": "09:00 AM",
-        "image": "./assest/fintech-blockchain.jpg",
+        "image": "./assest/download (7).jfif",
         "peopleGoing": 410
       },
       "details": {
@@ -303,11 +303,11 @@
         "location": "Ibadan, Nigeria",
         "date": "2026-08-05",
         "time": "10:30 AM",
-        "image": "./assest/digital-transformation.jpg",
+        "image": "./assest/download (5).jfif",
         "peopleGoing": 360
       },
       "details": {
-        "bannerImage": "/images/events/digital-transformation-banner.jpg",
+        "bannerImage": "./assest/download (5).jfif",
         "description": "Uncover strategies for digital transformation across businesses, governments, and organizations in Nigeria and Africa.",
         "venue": "Ibadan Tech Convention Hall, Ibadan",
         "prices": [
@@ -340,11 +340,11 @@
         "location": "Lagos, Nigeria",
         "date": "2026-08-20",
         "time": "06:00 PM",
-        "image": "./assest/startup-pitch.jpg",
+        "image": "./assest/download (3).jfif",
         "peopleGoing": 300
       },
       "details": {
-        "bannerImage": "/images/events/startup-pitch-banner.jpg",
+        "bannerImage": "./assest/download (3).jfif",
         "description": "Watch emerging startups pitch their ideas to investors, get insights from mentors, and network with tech enthusiasts.",
         "venue": "Lagos Innovation Center, Lagos",
         "prices": [
@@ -377,11 +377,11 @@
         "location": "Port Harcourt, Nigeria",
         "date": "2026-09-01",
         "time": "09:00 AM",
-        "image": "./assest/iot-robotics.jpg",
+        "image": "./assest/download (4).jfif",
         "peopleGoing": 420
       },
       "details": {
-        "bannerImage": "/images/events/iot-robotics-banner.jpg",
+        "bannerImage": "./assest/download (4).jfif",
         "description": "Experience the latest in robotics, IoT solutions, and smart devices, with hands-on demos and workshops.",
         "venue": "Port Harcourt Tech Arena, Port Harcourt",
         "prices": [
@@ -414,11 +414,11 @@
         "location": "Enugu, Nigeria",
         "date": "2026-09-15",
         "time": "10:00 AM",
-        "image": "./assest/edtech-innovation.jpg",
+        "image": "./assest/download (5).jfif",
         "peopleGoing": 380
       },
       "details": {
-        "bannerImage": "/images/events/edtech-innovation-banner.jpg",
+        "bannerImage": "./assest/download (5).jfif",
         "description": "Learn about the latest innovations in education technology, online learning platforms, and AI-powered education tools.",
         "venue": "Enugu Tech Innovation Hub, Enugu",
         "prices": [
