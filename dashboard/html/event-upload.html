@@ -16,8 +16,9 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="dash-link">
-                <a href="../index.html" ><i class="fa-solid fa-house-chimney"></i>Home</a>
-                <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload Events</a>
+                <a href="../index.html"><i class="fa-solid fa-house-chimney"></i>Home</a>
+                <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload
+                    Events</a>
                 <!-- <a href="../html/order.html"><i class="fa-solid fa-address-book"></i>Orders</a> -->
                 <a href="../html/event.html"><i class="fa-solid fa-calendar-week"></i>Events</a>
                 <!-- <a href="../html/newsletter.html"><i class="fa-solid fa-envelope-open-text"></i>Newsletter</a> -->
@@ -61,51 +62,40 @@
                         <textarea id="description" cols="100" rows="10"></textarea>
                     </form>
                 </div>
+                <!-- Tickets Section -->
                 <div class="form-i">
                     <h2>Tickets</h2>
                     <div class="ticket-input">
-                        <form action="" class="form-set">
-                            <div class="row">
+                        <div id="ticketRows">
+                            <!-- First ticket row -->
+                            <div class="ticket-row">
                                 <div class="form-group">
-                                    <label for="">Ticket category</label>
-                                    <input id="ticketCategory" type="text" placeholder="Enter apartment type">
+                                    <label>Ticket category</label>
+                                    <input type="text" class="ticketCategory" placeholder="Enter ticket type">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Ticket price</label>
-                                    <input id="ticketPrice" type="text" placeholder="Enter ticket price">
+                                    <label>Ticket price</label>
+                                    <input type="number" class="ticketPrice" placeholder="Enter ticket price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Benefits</label>
+                                    <input type="text" class="ticketBenefits" placeholder="Enter benefits">
+                                </div>
+                                <div class="move-right">
+                                    <img src="../image/plus.svg" alt="" class="form-img addTicketBtn">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="">Benefits</label>
-                                <input id="ticketBenefits" type="text" placeholder="Enter your text here">
-                            </div>
-                            <div class="move-right">
-                                  <img src="../image/plus.svg" alt="" class="form-img" id="add">
-                            </div>
-                           
-                        </form>
+                        </div>
+                        <!-- Publish button outside form -->
+                        <button id="publishBtn" type="button">Submit</button>
                     </div>
-                </div>
-
-                <div class="image-section">
-                    <h2>Thumbnails</h2>
-                    <div class="image-div">
-                        <img src="../image/image 2.svg" alt="" srcset="">
-                        <img src="../image/image 2.svg" alt="" srcset="">
-                        <img src="../image/image 2.svg" alt="" srcset="">
-                        <img src="../image/image 2.svg" alt="" srcset="">
-                    </div>
-                </div>
-                <div class="button-group">
-                    <button class="spe">Preview</button>
-                    <button id="publishBtn">Publish</button>
                 </div>
             </section>
         </main>
         <script src="../javascript/create-event.js"></script>
-        <!-- <script src="../javascript/create-event.js"></script>
+        <script src="../javascript/create-event.js"></script>
         <script src="../javascript/script.js"></script>
-        <script src="../api/admin.js"></script> -->
+        <script src="../api/admin.js"></script>
 </body>
 
 </html>

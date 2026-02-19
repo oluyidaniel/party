@@ -3,36 +3,36 @@
     {
       "id": "evt_001",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "NextGen AI Summit 2026",
+        "location": "Abuja, Nigeria",
+        "date": "2026-04-05",
+        "time": "10:00 AM",
+        "image": "./assest/ai-summit.jpg",
+        "peopleGoing": 520
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/nextgen-ai-banner.jpg",
+        "description": "Explore the future of artificial intelligence with hands-on workshops, panel discussions, and keynote sessions from global AI pioneers.",
+        "venue": "Transcorp Hilton Conference Hall, Abuja",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 20000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 45000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 7000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Register Now",
           "action": "checkout"
         }
       }
@@ -40,36 +40,36 @@
     {
       "id": "evt_002",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "Cybersecurity Trends Workshop",
+        "location": "Port Harcourt, Nigeria",
+        "date": "2026-04-12",
+        "time": "09:30 AM",
+        "image": "./assest/cyber-workshop.jpg",
+        "peopleGoing": 310
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/cyber-trends-banner.jpg",
+        "description": "Dive into the latest cybersecurity threats, defense strategies, and hands-on training for IT professionals and enthusiasts.",
+        "venue": "Port Harcourt Tech Hub, Port Harcourt",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 12000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 28000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 4000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Join Workshop",
           "action": "checkout"
         }
       }
@@ -77,36 +77,36 @@
     {
       "id": "evt_003",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "Tech Innovators Meetup",
+        "location": "Ibadan, Nigeria",
+        "date": "2026-05-02",
+        "time": "11:00 AM",
+        "image": "./assest/tech-meetup.jpg",
+        "peopleGoing": 280
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/tech-innovators-banner.jpg",
+        "description": "Network with top tech innovators, discover new startup opportunities, and attend live demo sessions of emerging technologies.",
+        "venue": "Ibadan Tech Hub, Ibadan",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 10000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 25000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 3000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Reserve Seat",
           "action": "checkout"
         }
       }
@@ -114,36 +114,36 @@
     {
       "id": "evt_004",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "Blockchain & AI Expo",
+        "location": "Kano, Nigeria",
+        "date": "2026-05-20",
+        "time": "08:30 AM",
+        "image": "./assest/blockchain-ai.jpg",
+        "peopleGoing": 400
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/blockchain-ai-banner.jpg",
+        "description": "Discover the synergy between blockchain and AI with live panels, hands-on projects, and keynote speakers from leading tech firms.",
+        "venue": "Kano International Conference Hall, Kano",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 18000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 40000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 6000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Get Tickets",
           "action": "checkout"
         }
       }
@@ -151,17 +151,17 @@
     {
       "id": "evt_005",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "Women in Tech Summit",
+        "location": "Enugu, Nigeria",
+        "date": "2026-06-10",
+        "time": "10:30 AM",
+        "image": "./assest/women-tech.jpg",
+        "peopleGoing": 350
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/women-tech-banner.jpg",
+        "description": "Celebrate and empower women in technology through mentorship, networking, and workshops led by industry leaders.",
+        "venue": "Enugu Innovation Center, Enugu",
         "prices": [
           {
             "type": "Regular",
@@ -170,7 +170,7 @@
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 32000,
             "currency": "NGN"
           },
           {
@@ -180,7 +180,7 @@
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Sign Up",
           "action": "checkout"
         }
       }
@@ -188,36 +188,36 @@
     {
       "id": "evt_006",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
+        "title": "Smart Cities Tech Forum",
+        "location": "Abuja, Nigeria",
+        "date": "2026-06-25",
         "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "image": "./assest/smart-cities.jpg",
+        "peopleGoing": 470
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/smart-cities-banner.jpg",
+        "description": "Explore technologies shaping smart cities, including IoT, AI, and cybersecurity solutions for urban development.",
+        "venue": "Abuja Civic Center, Abuja",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 22000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 48000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 8000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Book Now",
           "action": "checkout"
         }
       }
@@ -225,21 +225,21 @@
     {
       "id": "evt_007",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
+        "title": "AI for Healthcare Conference",
         "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "date": "2026-07-08",
+        "time": "10:00 AM",
+        "image": "./assest/ai-healthcare.jpg",
+        "peopleGoing": 390
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/ai-healthcare-banner.jpg",
+        "description": "Learn how AI is transforming healthcare delivery, diagnostics, and patient care through interactive panels and case studies.",
+        "venue": "Lagos Medical Conference Center, Lagos",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 16000,
             "currency": "NGN"
           },
           {
@@ -254,7 +254,7 @@
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Attend Now",
           "action": "checkout"
         }
       }
@@ -262,36 +262,36 @@
     {
       "id": "evt_008",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
+        "title": "FinTech & Blockchain Summit",
+        "location": "Abuja, Nigeria",
+        "date": "2026-07-22",
         "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "image": "./assest/fintech-blockchain.jpg",
+        "peopleGoing": 410
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/fintech-blockchain-banner.jpg",
+        "description": "Discuss the future of financial technology, blockchain applications, and crypto regulations with leading industry professionals.",
+        "venue": "Abuja Tech Hub Auditorium, Abuja",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 18000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 40000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 6000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Register Today",
           "action": "checkout"
         }
       }
@@ -299,36 +299,36 @@
     {
       "id": "evt_009",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "Digital Transformation Forum",
+        "location": "Ibadan, Nigeria",
+        "date": "2026-08-05",
+        "time": "10:30 AM",
+        "image": "./assest/digital-transformation.jpg",
+        "peopleGoing": 360
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/digital-transformation-banner.jpg",
+        "description": "Uncover strategies for digital transformation across businesses, governments, and organizations in Nigeria and Africa.",
+        "venue": "Ibadan Tech Convention Hall, Ibadan",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 14000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 30000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 4000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Sign Up Now",
           "action": "checkout"
         }
       }
@@ -336,36 +336,36 @@
     {
       "id": "evt_010",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
+        "title": "Startup & Tech Pitch Night",
         "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "date": "2026-08-20",
+        "time": "06:00 PM",
+        "image": "./assest/startup-pitch.jpg",
+        "peopleGoing": 300
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/startup-pitch-banner.jpg",
+        "description": "Watch emerging startups pitch their ideas to investors, get insights from mentors, and network with tech enthusiasts.",
+        "venue": "Lagos Innovation Center, Lagos",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 12000,
             "currency": "NGN"
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 25000,
             "currency": "NGN"
           },
           {
             "type": "Student",
-            "amount": 5000,
+            "amount": 3000,
             "currency": "NGN"
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Book Ticket",
           "action": "checkout"
         }
       }
@@ -373,17 +373,17 @@
     {
       "id": "evt_011",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
+        "title": "IoT & Robotics Expo",
+        "location": "Port Harcourt, Nigeria",
+        "date": "2026-09-01",
         "time": "09:00 AM",
-        "image": "./assest/day.jpg",
+        "image": "./assest/iot-robotics.jpg",
         "peopleGoing": 420
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/iot-robotics-banner.jpg",
+        "description": "Experience the latest in robotics, IoT solutions, and smart devices, with hands-on demos and workshops.",
+        "venue": "Port Harcourt Tech Arena, Port Harcourt",
         "prices": [
           {
             "type": "Regular",
@@ -392,7 +392,7 @@
           },
           {
             "type": "VIP",
-            "amount": 35000,
+            "amount": 32000,
             "currency": "NGN"
           },
           {
@@ -402,7 +402,7 @@
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Attend Expo",
           "action": "checkout"
         }
       }
@@ -410,21 +410,21 @@
     {
       "id": "evt_012",
       "card": {
-        "title": "AI & Cybersecurity Conference 2026",
-        "location": "Lagos, Nigeria",
-        "date": "2026-03-18",
-        "time": "09:00 AM",
-        "image": "./assest/day.jpg",
-        "peopleGoing": 420
+        "title": "EdTech & Innovation Summit",
+        "location": "Enugu, Nigeria",
+        "date": "2026-09-15",
+        "time": "10:00 AM",
+        "image": "./assest/edtech-innovation.jpg",
+        "peopleGoing": 380
       },
       "details": {
-        "bannerImage": "/images/events/ai-cyber-banner.jpg",
-        "description": "Join industry leaders, cybersecurity experts, and AI researchers for a full-day conference focused on emerging threats, defensive AI, and real-world case studies.",
-        "venue": "Eko Convention Center, Victoria Island",
+        "bannerImage": "/images/events/edtech-innovation-banner.jpg",
+        "description": "Learn about the latest innovations in education technology, online learning platforms, and AI-powered education tools.",
+        "venue": "Enugu Tech Innovation Hub, Enugu",
         "prices": [
           {
             "type": "Regular",
-            "amount": 15000,
+            "amount": 16000,
             "currency": "NGN"
           },
           {
@@ -439,7 +439,7 @@
           }
         ],
         "cta": {
-          "label": "Buy Now",
+          "label": "Register Now",
           "action": "checkout"
         }
       }

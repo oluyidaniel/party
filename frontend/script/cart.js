@@ -57,7 +57,7 @@ function addToCart() {
   }
 
   const existingItem = cart.find(item =>
-    item.eventId === currentEvent.id &&
+    item.eventId === currentEvent.eventId &&
     item.type === selectedTicket.type
   );
 
@@ -66,7 +66,7 @@ function addToCart() {
     existingItem.total = existingItem.quantity * existingItem.amount;
   } else {
     cart.push({
-      eventId: currentEvent.id,
+      eventId: currentEvent.eventId,
       title: currentEvent.card.title,
       type: selectedTicket.type,
       amount: selectedTicket.amount,
@@ -179,37 +179,55 @@ function changeQuantity(delta) {
 }
 
 // ======================================
-// PAYSTACK PAYMENT
+// BACKEND PAYMENT INITIALIZATION
 // ======================================
-function payWithPaystack() {
+async function checkout() {
   if (cart.length === 0) {
     alert("Cart is empty.");
     return;
   }
 
-  const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
+  const emailInput = document.getElementById("customer-email");
+  if (!emailInput || !emailInput.value) {
+    alert("Please enter your email.");
+    return;
+  }
 
-  const handler = PaystackPop.setup({
-    key: "pk_test_2d5d40fcadf312c919d925e001af0131cb38b259", // replace with real key
-    email: "kapayas090@gmail.com", // replace with real email
-    amount: totalAmount * 100,
-    currency: "NGN",
-    ref: "EVT_" + Date.now(),
+  const email = emailInput.value;
 
-    callback: function (response) {
-      alert("Payment successful! Ref: " + response.reference);
-      cart = [];
-      saveCart();
-      closeCartModal();
-    },
+  try {
+    // For now, handle one event per checkout
+    const item = cart[0];
 
-    onClose: function () {
-      alert("Transaction cancelled.");
+    const response = await fetch("/api/payments/initialize", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        eventId: item.eventId,
+        ticketType: item.type,
+        quantity: item.quantity,
+        email: email
+      })
+    });
+
+    const data = await response.json();
+
+    if (!data.success) {
+      alert(data.message || "Payment initialization failed.");
+      return;
     }
-  });
 
-  handler.openIframe();
+    // Redirect to Paystack hosted checkout
+    window.location.href = data.authorization_url;
+
+  } catch (error) {
+    console.error(error);
+    alert("Payment error. Try again.");
+  }
 }
+
 
 // ======================================
 // HELPER FUNCTIONS

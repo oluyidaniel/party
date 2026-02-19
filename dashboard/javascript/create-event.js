@@ -3,10 +3,9 @@
 // ===============================
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
-/* ================= AUTH SYSTEM ================= */
-
+// ================= AUTH SYSTEM =================
 function getToken() {
-  return localStorage.getItem("adminToken"); // must match login
+  return localStorage.getItem("adminToken");
 }
 
 function redirectToLogin() {
@@ -16,12 +15,10 @@ function redirectToLogin() {
 
 function requireAuth() {
   const token = getToken();
-
   if (!token) {
     redirectToLogin();
     return false;
   }
-
   return true;
 }
 
@@ -29,180 +26,125 @@ if (!requireAuth()) {
   throw new Error("Not authenticated");
 }
 
-/* ================= DISPLAY ADMIN NAME ================= */
-
+// ================= DISPLAY ADMIN NAME =================
 function displayAdminName() {
   const admin = JSON.parse(localStorage.getItem("adminUser"));
   const welcomeText = document.getElementById("welcomeText");
-
   if (admin?.name && welcomeText) {
     welcomeText.textContent = `Welcome ${admin.name}`;
   }
 }
-
 displayAdminName();
 
-/* ================= DOM ELEMENTS ================= */
-
+// DOM ELEMENTS
+const ticketRows = document.getElementById("ticketRows");
+const publishBtn = document.getElementById("publishBtn");
 const inputs = {
   title: document.getElementById("title"),
   location: document.getElementById("location"),
-  price: document.getElementById("price"),
   time: document.getElementById("time"),
   description: document.getElementById("description"),
   heroImage: document.getElementById("previewImage"),
   imageUpload: document.getElementById("imageUpload")
 };
 
-const publishBtn = document.getElementById("publishBtn");
-const previewBtn = document.querySelector(".spe");
-const ticketContainer = document.querySelector(".ticket-input");
-const addTicketBtn = document.getElementById("add");
+// IMAGE PREVIEW
+inputs.imageUpload?.addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => inputs.heroImage.src = reader.result;
+  reader.readAsDataURL(file);
+});
 
-/* ================= IMAGE PREVIEW ================= */
+// ADD TICKET
+ticketRows.addEventListener("click", e => {
+  if (e.target.classList.contains("addTicketBtn")) {
+    const row = document.createElement("div");
+    row.className = "ticket-row";
+    row.innerHTML = `
+      <div class="form-group">
+        <label>Ticket category</label>
+        <input type="text" class="ticketCategory" placeholder="Enter ticket type">
+      </div>
+      <div class="form-group">
+        <label>Ticket price</label>
+        <input type="number" class="ticketPrice" placeholder="Enter ticket price">
+      </div>
+      <div class="form-group">
+        <label>Benefits</label>
+        <input type="text" class="ticketBenefits" placeholder="Enter benefits">
+      </div>
+      <button type="button" class="removeTicket">Remove</button>
+    `;
+    row.querySelector(".removeTicket").addEventListener("click", () => row.remove());
+    ticketRows.appendChild(row);
+  }
+});
 
-if (inputs.imageUpload) {
-  inputs.imageUpload.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      inputs.heroImage.src = reader.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-/* ================= ADD TICKET ================= */
-
-function createTicketForm() {
-  const wrapper = document.createElement("div");
-  wrapper.className = "form-set";
-
-  wrapper.innerHTML = `
-    <div class="row">
-      <input class="ticketCategory" type="text" placeholder="Ticket category">
-      <input class="ticketPrice" type="number" placeholder="Ticket price">
-    </div>
-    <input class="ticketBenefits" type="text" placeholder="Benefits">
-    <button type="button" class="removeTicket">Remove</button>
-  `;
-
-  wrapper.querySelector(".removeTicket").addEventListener("click", () => {
-    wrapper.remove();
-  });
-
-  return wrapper;
-}
-
-if (addTicketBtn) {
-  addTicketBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    ticketContainer.appendChild(createTicketForm());
-  });
-}
-
-/* ================= COLLECT DATA ================= */
-
+// COLLECT FORM DATA
 function collectFormData() {
-  const tickets = [];
-
-  document.querySelectorAll(".form-set").forEach((form) => {
-    const category = form.querySelector(".ticketCategory")?.value.trim();
-    const price = form.querySelector(".ticketPrice")?.value.trim();
-    const benefits = form.querySelector(".ticketBenefits")?.value.trim() || "";
-
-    if (category && price) {
-      tickets.push({
-        category,
-        price: Number(price),
-        benefits
-      });
-    }
+  const prices = [];
+  document.querySelectorAll(".ticket-row").forEach(row => {
+    const type = row.querySelector(".ticketCategory")?.value.trim();
+    const amount = Number(row.querySelector(".ticketPrice")?.value);
+    const benefits = row.querySelector(".ticketBenefits")?.value.trim();
+    if (type && amount) prices.push({ type, amount, currency: "NGN", benefits });
   });
 
   return {
-    title: inputs.title?.value.trim(),
-    location: inputs.location?.value.trim(),
-    price: Number(inputs.price?.value),
-    time: inputs.time?.value.trim(),
-    description: inputs.description?.value.trim(),
-    heroImage: inputs.heroImage?.src,
-    tickets
+    card: {
+      title: inputs.title?.value.trim(),
+      location: inputs.location?.value.trim(),
+      time: inputs.time?.value.trim(),
+      image: inputs.heroImage?.src,
+      peopleGoing: 0
+    },
+    details: {
+      bannerImage: inputs.heroImage?.src,
+      description: inputs.description?.value.trim(),
+      venue: inputs.location?.value.trim(),
+      prices: prices,
+      cta: { label: "Buy Now", action: "#" }
+    }
   };
 }
 
-/* ================= VALIDATION ================= */
-
+// VALIDATION
 function validateEvent(data) {
-  if (!data.title) return "Title is required";
-  if (!data.location) return "Location is required";
-  if (!data.price) return "Price is required";
-  if (!data.time) return "Time is required";
-  if (!data.description) return "Description is required";
+  if (!data.card.title) return "Title is required";
+  if (!data.card.location) return "Location is required";
+  if (!data.card.time) return "Time is required";
+  if (!data.details.description) return "Description is required";
+  if (data.details.prices.length === 0) return "At least one ticket is required";
   return null;
 }
 
-/* ================= PREVIEW ================= */
+// PUBLISH EVENT
+publishBtn?.addEventListener("click", async () => {
+  const token = localStorage.getItem("adminToken");
+  if (!token) return window.location.href = "../html/admin-login.html";
 
-if (previewBtn) {
-  previewBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("Preview:", collectFormData());
-    alert("Check console for preview data.");
-  });
-}
+  const data = collectFormData();
+  const error = validateEvent(data);
+  if (error) return alert(error);
 
-/* ================= PUBLISH EVENT ================= */
+  try {
+    const res = await fetch(`${API_BASE}/admin/events`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    });
 
-if (publishBtn) {
-  publishBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-
-    const token = getToken();
-
-    if (!token) {
-      redirectToLogin();
-      return;
-    }
-
-    const eventData = collectFormData();
-    const error = validateEvent(eventData);
-
-    if (error) {
-      alert(error);
-      return;
-    }
-
-    try {
-      const response = await fetch(`${API_BASE}/admin/events`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(eventData)
-      });
-
-      if (response.status === 401) {
-        localStorage.removeItem("adminToken");
-        redirectToLogin();
-        return;
-      }
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || "Failed to create event");
-      }
-
-      alert("Event created successfully!");
-      window.location.reload();
-
-    } catch (error) {
-      console.error(error);
-      alert(error.message);
-    }
-  });
-}
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || "Failed to create event");
+    alert("Event created successfully!");
+    window.location.reload();
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+});
