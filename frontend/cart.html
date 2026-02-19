@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Event Ticket Cart</title>
   <link rel="stylesheet" href="../frontend/style/cart.css" />
+  <script src="https://js.paystack.co/v1/inline.js"></script>
 </head>
 <body>
 
@@ -32,27 +33,26 @@
 </section>
 
 <!-- CART MODAL -->
-<div class="modal-overlay" id="cartModal">
+<div class="modal-overlay" id="cartModal"> <!-- This is actually the ticket selection modal -->
   <div class="modal">
     <span class="close-btn">&times;</span>
-
     <h2 id="eventTitle"></h2>
-
     <label>Ticket Type</label>
     <select id="ticketType">
       <option value="regular">Regular</option>
       <option value="vip">VIP</option>
       <option value="vvip">VVIP</option>
     </select>
-
+    <label>Quantity</label> <!-- Add this -->
+    <input type="number" id="quantity" value="1" min="1">
     <div class="price">
       ₦<span id="ticketPrice">0</span>
     </div>
-
-    <button class="pay-btn">Proceed to Payment</button>
+    <button class="add-to-cart-btn">Add to Cart</button> <!-- Rename for clarity, was pay-btn -->
   </div>
 </div>
 
 <script src="../frontend/script/cart.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>

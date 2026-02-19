@@ -5,12 +5,6 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let currentEvent = null;
 let selectedTicket = null;
 
-document.getElementById("nav-buttons").addEventListener("click", () => {
-  document.getElementById("cart-modal").classList.remove("hidden");
-});
-function closeCartModal() {
-  document.getElementById("cart-modal").classList.add("hidden");
-}
 // ======================================
 // INITIALIZE PAGE
 // ======================================
@@ -18,11 +12,49 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   renderCart();
 
-  // Attach navbar cart button
+  // Attach navbar cart button (removed redundant top listener)
   const navCartBtn = document.getElementById("nav-buttons");
   if (navCartBtn) {
     navCartBtn.addEventListener("click", openCartModal);
   }
+
+  // Attach pay button listener in cart modal
+  const payBtn = document.getElementById("pay-now-btn");
+  if (payBtn) {
+    payBtn.addEventListener("click", payWithPaystack);
+  }
+
+  // Buy buttons listeners
+  const buyButtons = document.querySelectorAll('.buy-btn');
+  buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.event-card');
+      currentEvent = {
+        eventId: card.dataset.eventId,  // Added this
+        title: card.dataset.title,
+        prices: {
+          regular: parseInt(card.dataset.regular),
+          vip: parseInt(card.dataset.vip),
+          vvip: parseInt(card.dataset.vvip)
+        }
+      };
+      document.getElementById('eventTitle').textContent = currentEvent.title;
+      document.getElementById('ticketPrice').textContent = currentEvent.prices.regular;
+      document.getElementById('ticketModal').style.display = 'block';  // Updated ID
+      updatePrice(); // Initial price update
+    });
+  });
+
+  // Close ticket modal button
+  document.querySelector('.close-btn').addEventListener('click', () => {
+    document.getElementById('ticketModal').style.display = 'none';  // Updated ID
+  });
+
+  // Ticket type change updates price
+  document.getElementById('ticketType').addEventListener('change', updatePrice);
+
+  // Add to cart button
+  document.querySelector('.add-to-cart-btn').addEventListener('click', addToCart);
 });
 
 // ======================================
@@ -35,10 +67,22 @@ function openCartModal() {
   renderCart();
 }
 
+// ======================================
+// CLOSE CART MODAL (removed duplicate)
+// ======================================
 function closeCartModal() {
   const modal = document.getElementById("cart-modal");
   if (!modal) return;
   modal.classList.add("hidden");
+}
+
+// ======================================
+// UPDATE PRICE
+// ======================================
+function updatePrice() {
+  const type = document.getElementById('ticketType').value;
+  selectedTicket = { type, amount: currentEvent.prices[type] };
+  document.getElementById('ticketPrice').textContent = selectedTicket.amount;
 }
 
 // ======================================
@@ -50,7 +94,8 @@ function addToCart() {
     return;
   }
 
-  const qty = parseInt(document.getElementById("quantity").value);
+  const qtyInput = document.getElementById("quantity");
+  const qty = parseInt(qtyInput ? qtyInput.value : 0);
   if (!qty || qty < 1) {
     alert("Invalid quantity.");
     return;
@@ -67,7 +112,7 @@ function addToCart() {
   } else {
     cart.push({
       eventId: currentEvent.eventId,
-      title: currentEvent.card.title,
+      title: currentEvent.title,  // Fixed: removed .card
       type: selectedTicket.type,
       amount: selectedTicket.amount,
       quantity: qty,
@@ -76,8 +121,12 @@ function addToCart() {
   }
 
   saveCart();
-  closeModal();
+  closeTicketModal();  // Added custom close for ticket modal
   alert("Ticket added to cart.");
+}
+
+function closeTicketModal() {
+  document.getElementById('ticketModal').style.display = 'none';  // Custom for ticket modal
 }
 
 // ======================================
@@ -146,39 +195,6 @@ function renderCart() {
 }
 
 // ======================================
-// PAYMENT MODAL FUNCTIONS
-// ======================================
-function openPaymentModal(ticket) {
-  selectedTicket = ticket;
-
-  setText("selected-ticket", ticket.type);
-  setText(
-    "selected-price",
-    `${ticket.currency} ${ticket.amount.toLocaleString()}`
-  );
-
-  const qtyInput = document.getElementById("quantity");
-  if (qtyInput) qtyInput.value = 1;
-
-  const modal = document.getElementById("payment-modal");
-  if (modal) modal.classList.remove("hidden");
-}
-
-function closeModal() {
-  const modal = document.getElementById("payment-modal");
-  if (modal) modal.classList.add("hidden");
-}
-
-function changeQuantity(delta) {
-  const input = document.getElementById("quantity");
-  if (!input) return;
-  let value = parseInt(input.value) || 1;
-  value += delta;
-  if (value < 1) value = 1;
-  input.value = value;
-}
-
-// ======================================
 // PAYSTACK PAYMENT
 // ======================================
 function payWithPaystack() {
@@ -186,55 +202,32 @@ function payWithPaystack() {
     alert("Cart is empty.");
     return;
   }
-
   const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
-
   const handler = PaystackPop.setup({
-    key: "pk_test_2d5d40fcadf312c919d925e001af0131cb38b259", // Replace with your real key
-    email: "sallamtude7@gmail.com", // Replace with real user email
+    key: "pk_test_2d5d40fcadf312c919d925e001af0131cb38b259", // Test key OK for dev
+    email: "kapayas090@gmai.com",
     amount: totalAmount * 100,
     currency: "NGN",
     ref: "EVT_" + Date.now(),
-
     callback: function (response) {
       alert("Payment successful! Ref: " + response.reference);
-
       cart = [];
       saveCart();
       closeCartModal();
     },
-
     onClose: function () {
       alert("Transaction cancelled.");
     }
   });
-
   handler.openIframe();
 }
 
 // ======================================
-// HELPERS
+// HELPERS (removed unused setText, setBackground, showError)
 // ======================================
-function setText(id, value) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = value;
-}
-
-function setBackground(id, url) {
-  const el = document.getElementById(id);
-  if (el) el.style.backgroundImage = `url(${url})`;
-}
-
-function showError(message) {
-  document.body.innerHTML = `
-    <h2 style="color:red;text-align:center;margin-top:50px;">
-      ${message}
-    </h2>
-  `;
-}
-
-function changeQuantity(delta) {
+function changeQuantity(delta) {  // Removed duplicate
   const input = document.getElementById("quantity");
+  if (!input) return;
   let value = parseInt(input.value) || 1;
   value += delta;
   if (value < 1) value = 1;

@@ -12,6 +12,7 @@
   overflow: auto; /* scroll if needed */
   background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
   transition: opacity 0.3s ease;
+  color: black;
 }
 
 .modal .modal-content {

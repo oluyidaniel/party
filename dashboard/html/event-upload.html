@@ -16,9 +16,8 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="dash-link">
-                <a href="../index.html"><i class="fa-solid fa-house-chimney"></i>Home</a>
-                <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload
-                    Events</a>
+                <a href="../index.html" ><i class="fa-solid fa-house-chimney"></i>Home</a>
+                <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload Events</a>
                 <a href="../html/order.html"><i class="fa-solid fa-address-book"></i>Orders</a>
                 <a href="../html/event.html"><i class="fa-solid fa-calendar-week"></i>Events</a>
                 <!-- <a href="../html/newsletter.html"><i class="fa-solid fa-envelope-open-text"></i>Newsletter</a> -->
@@ -37,70 +36,76 @@
                     <div class="cir-image"><img src="" alt="" srcset=""></div>
                 </div>
             </header>
-            <form id="event-form" class="event-form">
-
-                <!-- Basic Info -->
-                <div class="form-row">
-                    <input type="text" id="title" placeholder="Event Title" required>
-                    <input type="text" id="event-id" placeholder="Event ID" required>
+            <section class="inputs">
+                <div>
+                    <input id="title" type="text" placeholder="Enter event title" class="in-94">
+                    <input type="button" value="Title" class="in-10" id="blue">
                 </div>
-
-                <div class="form-row">
-                    <input type="text" id="price" placeholder="Event Price">
-                    <input type="text" id="time" placeholder="Event Time">
+                <div class="group-input">
+                    <input id="location" type="text" placeholder="Enter event location">
+                    <input id="price" type="text" placeholder="Enter event price">
                 </div>
-
-                <!-- Hero Image -->
-                <div class="image-upload">
-                    <h3>Hero Image</h3>
-                    <label for="imageUpload" class="upload-box">
-                        <img id="previewImage" src="../image/image.svg" alt="placeholder">
-                        <input type="file" id="imageUpload" hidden>
+                <div>
+                    <input id="time" type="text" placeholder="Enter event time" class="in-50">
+                </div>
+                <div class="container">
+                    <h2>Hero Image</h2>
+                    <label for="imageUpload" class="upload-box" id="uploadLabel">
+                        <img id="previewImage" src="../image/image.svg" alt="placeholder" />
+                        <input type="file" id="imageUpload" accept="image/*" hidden />
                     </label>
                 </div>
-
-                <!-- Description -->
-                <div class="textarea-section">
-                    <h3>Description</h3>
-                    <textarea id="description" rows="5"></textarea>
+                <div class="text-ra">
+                    <h2>Description</h2>
+                    <form action="">
+                        <textarea id="description" cols="100" rows="10"></textarea>
+                    </form>
                 </div>
-
-                <!-- Tickets -->
-                <div class="tickets-section">
-                    <h3>Tickets</h3>
-
-                    <div class="ticket-group">
-                        <input type="text" id="ticketCategory" placeholder="Ticket Category">
-                        <input type="text" id="ticketPrice" placeholder="Ticket Price">
-                        <input type="text" id="ticketBenefits" placeholder="Benefits">
-                        <button type="button" id="addTicket">+</button>
+                <div class="form-i">
+                    <h2>Tickets</h2>
+                    <div class="ticket-input">
+                        <form action="" class="form-set">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="">Ticket category</label>
+                                    <input id="ticketCategory" type="text" placeholder="Enter apartment type">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Ticket price</label>
+                                    <input id="ticketPrice" type="text" placeholder="Enter ticket price">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Benefits</label>
+                                <input id="ticketBenefits" type="text" placeholder="Enter your text here">
+                            </div>
+                            <div class="move-right">
+                                  <img src="../image/plus.svg" alt="" class="form-img" id="add">
+                            </div>
+                           
+                        </form>
                     </div>
-
-                    <div id="ticket-list"></div>
                 </div>
 
-                <!-- Thumbnails -->
-                <div class="thumbnail-section">
-                    <h3>Thumbnails</h3>
-                    <div class="thumb-grid">
-                        <img src="../image/image 2.svg">
-                        <img src="../image/image 2.svg">
-                        <img src="../image/image 2.svg">
-                        <img src="../image/image 2.svg">
+                <div class="image-section">
+                    <h2>Thumbnails</h2>
+                    <div class="image-div">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
+                        <img src="../image/image 2.svg" alt="" srcset="">
                     </div>
                 </div>
-
-                <!-- Buttons -->
                 <div class="button-group">
-                    <button type="button" class="preview-btn">Preview</button>
-                    <button type="submit" class="publish-btn">Publish</button>
+                    <button class="spe">Preview</button>
+                    <button id="publishBtn">Publish</button>
                 </div>
-
-            </form>
+            </section>
         </main>
-       
         <script src="../javascript/create-event.js"></script>
-        <!-- <script src="../javascript/script.js"></script> -->
+        <script src="../javascript/create-event.js"></script>
+        <script src="../javascript/script.js"></script>
+        <script src="../api/admin.js"></script>
 </body>
 
 </html>
