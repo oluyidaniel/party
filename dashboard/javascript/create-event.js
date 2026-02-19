@@ -1,54 +1,19 @@
-// ===============================
-// CONFIG
-// ===============================
 const API_BASE = "https://party-backend-mj21.onrender.com/api";
 
-// ================= AUTH SYSTEM =================
-function getToken() {
-  return localStorage.getItem("adminToken");
-}
-
-function redirectToLogin() {
-  alert("Please login to continue.");
-  window.location.href = "../html/admin-login.html";
-}
-
-function requireAuth() {
-  const token = getToken();
-  if (!token) {
-    redirectToLogin();
-    return false;
-  }
-  return true;
-}
-
-if (!requireAuth()) {
-  throw new Error("Not authenticated");
-}
-
-// ================= DISPLAY ADMIN NAME =================
-function displayAdminName() {
-  const admin = JSON.parse(localStorage.getItem("adminUser"));
-  const welcomeText = document.getElementById("welcomeText");
-  if (admin?.name && welcomeText) {
-    welcomeText.textContent = `Welcome ${admin.name}`;
-  }
-}
-displayAdminName();
-
-// DOM ELEMENTS
-const ticketRows = document.getElementById("ticketRows");
-const publishBtn = document.getElementById("publishBtn");
 const inputs = {
   title: document.getElementById("title"),
   location: document.getElementById("location"),
+  date: document.getElementById("date"),
   time: document.getElementById("time"),
   description: document.getElementById("description"),
   heroImage: document.getElementById("previewImage"),
   imageUpload: document.getElementById("imageUpload")
 };
 
-// IMAGE PREVIEW
+const ticketRows = document.getElementById("ticketRows");
+const publishBtn = document.getElementById("publishBtn");
+
+// Image preview
 inputs.imageUpload?.addEventListener("change", e => {
   const file = e.target.files[0];
   if (!file) return;
@@ -57,24 +22,15 @@ inputs.imageUpload?.addEventListener("change", e => {
   reader.readAsDataURL(file);
 });
 
-// ADD TICKET
+// Add/Remove tickets
 ticketRows.addEventListener("click", e => {
   if (e.target.classList.contains("addTicketBtn")) {
     const row = document.createElement("div");
     row.className = "ticket-row";
     row.innerHTML = `
-      <div class="form-group">
-        <label>Ticket category</label>
-        <input type="text" class="ticketCategory" placeholder="Enter ticket type">
-      </div>
-      <div class="form-group">
-        <label>Ticket price</label>
-        <input type="number" class="ticketPrice" placeholder="Enter ticket price">
-      </div>
-      <div class="form-group">
-        <label>Benefits</label>
-        <input type="text" class="ticketBenefits" placeholder="Enter benefits">
-      </div>
+      <input type="text" class="ticketCategory" placeholder="Ticket type">
+      <input type="number" class="ticketPrice" placeholder="Price">
+      <input type="text" class="ticketBenefits" placeholder="Benefits">
       <button type="button" class="removeTicket">Remove</button>
     `;
     row.querySelector(".removeTicket").addEventListener("click", () => row.remove());
@@ -82,7 +38,7 @@ ticketRows.addEventListener("click", e => {
   }
 });
 
-// COLLECT FORM DATA
+// Collect form data
 function collectFormData() {
   const prices = [];
   document.querySelectorAll(".ticket-row").forEach(row => {
@@ -96,6 +52,7 @@ function collectFormData() {
     card: {
       title: inputs.title?.value.trim(),
       location: inputs.location?.value.trim(),
+      date: inputs.date?.value,
       time: inputs.time?.value.trim(),
       image: inputs.heroImage?.src,
       peopleGoing: 0
@@ -104,24 +61,25 @@ function collectFormData() {
       bannerImage: inputs.heroImage?.src,
       description: inputs.description?.value.trim(),
       venue: inputs.location?.value.trim(),
-      prices: prices,
+      prices,
       cta: { label: "Buy Now", action: "#" }
     }
   };
 }
 
-// VALIDATION
+// Validate
 function validateEvent(data) {
   if (!data.card.title) return "Title is required";
   if (!data.card.location) return "Location is required";
+  if (!data.card.date) return "Date is required";
   if (!data.card.time) return "Time is required";
   if (!data.details.description) return "Description is required";
   if (data.details.prices.length === 0) return "At least one ticket is required";
   return null;
 }
 
-// PUBLISH EVENT
-publishBtn?.addEventListener("click", async () => {
+// Submit Event
+publishBtn.addEventListener("click", async () => {
   const token = localStorage.getItem("adminToken");
   if (!token) return window.location.href = "../html/admin-login.html";
 
@@ -141,10 +99,11 @@ publishBtn?.addEventListener("click", async () => {
 
     const result = await res.json();
     if (!res.ok) throw new Error(result.message || "Failed to create event");
+
     alert("Event created successfully!");
     window.location.reload();
   } catch (err) {
-    console.error(err);
+    console.error("Submit Error:", err);
     alert(err.message);
   }
 });

@@ -14,7 +14,7 @@
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <!-- <aside class="sidebar">
             <div class="dash-link">
                 <a href="../index.html"><i class="fa-solid fa-house-chimney"></i>Home</a>
                 <a href="../html/event-upload.html" class="active"> <i class="fa-solid fa-file-arrow-up"></i>Upload
@@ -23,75 +23,43 @@
                 <a href="../html/event.html"><i class="fa-solid fa-calendar-week"></i>Events</a>
                 <!-- <a href="../html/newsletter.html"><i class="fa-solid fa-envelope-open-text"></i>Newsletter</a> -->
             </div>
-        </aside>
+        </aside> -->
 
-        <!-- Main Content -->
-        <main class="main">
-            <header class="header">
-                <div>
-                    <h4>Home</h4>
-                    <p id="welcomeText">Welcome</p>
-                </div>
-                <div class="actions">
-                    <div><input type="text" placeholder="Search" /> </div>
-                    <div class="cir-image"><img src="" alt="" srcset=""></div>
-                </div>
-            </header>
-            <section class="inputs">
-                <div>
-                    <input id="title" type="text" placeholder="Enter event title" class="in-94">
-                    <input type="button" value="Title" class="in-10" id="blue">
-                </div>
-                <div class="group-input">
-                    <input id="location" type="text" placeholder="Enter event location">
-                    <input id="price" type="text" placeholder="Enter event price">
-                </div>
-                <div>
-                    <input id="time" type="text" placeholder="Enter event time" class="in-50">
-                </div>
-                <div class="container">
-                    <h2>Hero Image</h2>
-                    <label for="imageUpload" class="upload-box" id="uploadLabel">
-                        <img id="previewImage" src="../image/image.svg" alt="placeholder" />
-                        <input type="file" id="imageUpload" accept="image/*" hidden />
-                    </label>
-                </div>
-                <div class="text-ra">
-                    <h2>Description</h2>
-                    <form action="">
-                        <textarea id="description" cols="100" rows="10"></textarea>
-                    </form>
-                </div>
-                <!-- Tickets Section -->
-                <div class="form-i">
-                    <h2>Tickets</h2>
-                    <div class="ticket-input">
-                        <div id="ticketRows">
-                            <!-- First ticket row -->
-                            <div class="ticket-row">
-                                <div class="form-group">
-                                    <label>Ticket category</label>
-                                    <input type="text" class="ticketCategory" placeholder="Enter ticket type">
-                                </div>
-                                <div class="form-group">
-                                    <label>Ticket price</label>
-                                    <input type="number" class="ticketPrice" placeholder="Enter ticket price">
-                                </div>
-                                <div class="form-group">
-                                    <label>Benefits</label>
-                                    <input type="text" class="ticketBenefits" placeholder="Enter benefits">
-                                </div>
-                                <div class="move-right">
-                                    <img src="../image/plus.svg" alt="" class="form-img addTicketBtn">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Publish button outside form -->
-                        <button id="publishBtn" type="button">Submit</button>
+        <section class="inputs">
+            <div>
+                <input id="title" type="text" placeholder="Enter event title">
+                <input id="location" type="text" placeholder="Enter location">
+                <input id="date" type="date" placeholder="Select date">
+                <input id="time" type="time" placeholder="Enter time">
+            </div>
+
+            <div>
+                <h2>Hero Image</h2>
+                <label for="imageUpload">
+                    <img id="previewImage" src="../image/image.svg" alt="placeholder" />
+                    <input type="file" id="imageUpload" accept="image/*" hidden>
+                </label>
+            </div>
+
+            <div>
+                <h2>Description</h2>
+                <textarea id="description" cols="100" rows="5" placeholder="Enter description"></textarea>
+            </div>
+
+            <div>
+                <h2>Tickets</h2>
+                <div id="ticketRows">
+                    <div class="ticket-row">
+                        <input type="text" class="ticketCategory" placeholder="Ticket type">
+                        <input type="number" class="ticketPrice" placeholder="Price">
+                        <input type="text" class="ticketBenefits" placeholder="Benefits">
+                        <button type="button" class="addTicketBtn">+</button>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+
+            <button id="publishBtn" type="button">Submit Event</button>
+        </section>
         <script src="../javascript/create-event.js"></script>
         <script src="../javascript/create-event.js"></script>
         <script src="../javascript/script.js"></script>
