@@ -272,7 +272,7 @@ function payWithPaystack() {
   const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
 
   const handler = PaystackPop.setup({
-    key: "sk_test_0383bf4ae66dc51e97ce0192ae7a4980fbe4005a", // Replace with your real key
+    key: "pk_test_2d5d40fcadf312c919d925e001af0131cb38b259", // Replace with your real key
     email: "kapayas090@gmail.com", // Replace with real user email
     amount: totalAmount * 100,
     currency: "NGN",
