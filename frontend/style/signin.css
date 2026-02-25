@@ -21,6 +21,60 @@ nav {
     transition: .3s;
     border-bottom: 1px solid rgba(231, 158, 3, 1);
 }
+/* Spinner */
+#spinner.hidden {
+    display: none;
+}
+
+#spinner .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid rgba(231, 158, 3, 1);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto; /* center it */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+
+/* Modal animation */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: rgba(231, 158, 3, 1);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modal.hidden {
+    display: none;
+}
 
 .navbar>img {
     width: 60%;
