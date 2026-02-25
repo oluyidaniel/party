@@ -3,10 +3,32 @@ const signupForm = document.getElementById("signupForm");
 const submitBtn = document.getElementById("submit");
 const feedbackModal = document.getElementById("feedbackModal");
 const feedbackMessage = document.getElementById("feedbackMessage");
+const spinner = document.getElementById("spinner");
 
 // Close modal function
 function closeFeedbackModal() {
-  feedbackModal.classList.add("hidden");
+  feedbackModal.classList.remove("show");
+  setTimeout(() => feedbackModal.classList.add("hidden"), 300);
+}
+
+// Show feedback modal dynamically
+function showFeedback(message) {
+  feedbackMessage.textContent = message;
+  feedbackModal.classList.remove("hidden");
+  feedbackModal.classList.add("show");
+
+  // Auto hide after 2.5 seconds
+  setTimeout(() => closeFeedbackModal(), 2500);
+}
+
+// Show spinner function
+function showSpinner() {
+  spinner.classList.remove("hidden");
+}
+
+// Hide spinner function
+function hideSpinner() {
+  spinner.classList.add("hidden");
 }
 
 // Signup handler
@@ -28,6 +50,17 @@ submitBtn.addEventListener("click", async () => {
     return;
   }
 
+  // Show spinner and disable button
+  showSpinner();
+  submitBtn.disabled = true;
+
+  // Auto-hide spinner after 10s max
+  const spinnerTimeout = setTimeout(() => {
+    hideSpinner();
+    submitBtn.disabled = false;
+    showFeedback("Request timed out. Please try again.");
+  }, 10000);
+
   try {
     const response = await fetch("http://localhost:5000/api/auth/signup", {
       method: "POST",
@@ -38,13 +71,11 @@ submitBtn.addEventListener("click", async () => {
     const data = await response.json();
 
     if (response.ok) {
-      // Show success message briefly
-      showFeedback("Signup successful! Redirecting to login...");
+      showFeedback("Signup successful! Redirecting...");
       signupForm.reset();
 
-      // Redirect after 2 seconds
       setTimeout(() => {
-        window.location.href = "./signin.html"; // <-- change to your signin page
+        window.location.href = "./signin.html";
       }, 2000);
     } else {
       showFeedback(data.message || "Signup failed");
@@ -52,11 +83,10 @@ submitBtn.addEventListener("click", async () => {
   } catch (error) {
     showFeedback("Network error. Please try again.");
     console.error(error);
+  } finally {
+    // Hide spinner and clear timeout
+    clearTimeout(spinnerTimeout);
+    hideSpinner();
+    submitBtn.disabled = false;
   }
 });
-
-// Show feedback modal
-function showFeedback(message) {
-  feedbackMessage.textContent = message;
-  feedbackModal.classList.remove("hidden");
-}
