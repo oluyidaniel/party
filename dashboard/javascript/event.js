@@ -1,4 +1,4 @@
-const API_BASE = "https://party-backend-mj21.onrender.com/api";
+const API_BASE = "http://localhost:5000/api";
 
 // Container where cards will be rendered
 const eventsContainer = document.getElementById("eventsContainer");
