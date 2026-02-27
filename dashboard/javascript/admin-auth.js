@@ -1,14 +1,10 @@
 // ===============================
-// CONFIG
-// ===============================
-const AUTH_API = "http://localhost:5000/api/auth";
-
-// ===============================
 // ELEMENTS
 // ===============================
 const loginForm = document.getElementById("loginForm");
 const feedbackModal = document.getElementById("feedbackModal");
 const feedbackMessage = document.getElementById("feedbackMessage");
+const spinner = document.getElementById("spinner");
 
 // ===============================
 // UI HELPERS
@@ -16,17 +12,28 @@ const feedbackMessage = document.getElementById("feedbackMessage");
 function showFeedback(message) {
   feedbackMessage.textContent = message;
   feedbackModal.classList.remove("hidden");
+  feedbackModal.classList.add("show");
+  setTimeout(() => closeFeedbackModal(), 2500);
 }
 
 function closeFeedbackModal() {
-  feedbackModal.classList.add("hidden");
+  feedbackModal.classList.remove("show");
+  setTimeout(() => feedbackModal.classList.add("hidden"), 300);
+}
+
+function showSpinner() {
+  spinner.classList.remove("hidden");
+}
+
+function hideSpinner() {
+  spinner.classList.add("hidden");
 }
 
 // ===============================
 // ADMIN LOGIN
 // ===============================
 loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  e.preventDefault(); // prevent page reload
 
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -36,11 +43,19 @@ loginForm.addEventListener("submit", async (e) => {
     return;
   }
 
+  showSpinner();
+
+  // Max spinner timeout 10s
+  const spinnerTimeout = setTimeout(() => {
+    hideSpinner();
+    showFeedback("Request timed out. Please try again.");
+  }, 10000);
+
   try {
-    const response = await fetch(`${AUTH_API}/login`, {
+    const response = await fetch("http://localhost:5000/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email: "admin@example.com", password: "admin123" })
     });
 
     const data = await response.json();
@@ -50,28 +65,22 @@ loginForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    if (!data.user.isAdmin) {
-      showFeedback("This account is not an admin.");
-      return;
-    }
-
-    // ✅ Store token
+    // Save token and admin info
     localStorage.setItem("adminToken", data.token);
-
-    // ✅ Store full user object
     localStorage.setItem("adminUser", JSON.stringify(data.user));
-
-    // ✅ Store just the name (for header display)
-    localStorage.setItem("adminName", data.user.name);
+    // localStorage.setItem("adminName", data.user.email);
 
     showFeedback("Login successful! Redirecting...");
 
     setTimeout(() => {
-      window.location.href = "../index.html";
+      window.location.href = "../html/event-upload.html";
     }, 1200);
 
   } catch (error) {
     console.error(error);
-    showFeedback("Server error. Please try again.");
+    showFeedback("Network error. Please try again.");
+  } finally {
+    clearTimeout(spinnerTimeout);
+    hideSpinner();
   }
 });
